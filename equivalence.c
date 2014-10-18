@@ -129,22 +129,31 @@ int main () {
     rule_set[i].lnk = i;
     // mirror
     tmp = transform_mirror (i, ca);
-//    printf ("r=%03u, tmp=%03u\n", i, tmp);
     if (tmp<i) {
+      rule_set[tmp].cnt += rule_set[i].cnt;
       rule_set[i].cnt = 0;
       rule_set[i].lnk = tmp;
-      rule_set[tmp].cnt++;
     }
     // permute
+    tmp = transform_permute (i, ca);
+    printf ("r=%03u, tmp=%03u\n", i, tmp);
+    if (tmp<i) {
+      rule_set[tmp].cnt += rule_set[i].cnt;
+      rule_set[i].cnt = 0;
+      rule_set[i].lnk = tmp;
+    }
   }
 
   // print equivalence table
   int unsigned sum_cnt = 0;
+  int unsigned equ_cnt = 0;
   for (int unsigned i=0; i<len; i++) {
     printf ("r=%03u, lnk=%03u, cnt=%03u\n", i, rule_set[i].lnk, rule_set[i].cnt);
     sum_cnt += rule_set[i].cnt;
+    equ_cnt += rule_set[i].cnt > 0;
   }
   printf ("sum_cnt=%u\n", sum_cnt);
+  printf ("equ_cnt=%u\n", equ_cnt);
 
   return (0);
 }
