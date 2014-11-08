@@ -12,7 +12,7 @@ typedef struct {
   unsigned int k;
   unsigned int n;
   unsigned int l;
-} t_rule;
+} t_ca;
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -40,33 +40,56 @@ int unsigned ipow(int unsigned base, int unsigned exp) {
 //
 //  i |  0  1  2  3  4  5  6  7 
 // ------------------------------
-//  2 |  0  0  0  0  1  1  1  1 
+//  0 |  0  0  0  0  1  1  1  1 
 //  1 |  0  0  1  1  0  0  1  1 
-//  0 |  0  1  0  1  0  1  0  1 
+//  2 |  0  1  0  1  0  1  0  1 
+// ------------------------------
+//    |  0  4  2  6  1  5  3  7 
 
-int unsigned const map_mirror [8] = { 0, 4, 2, 6, 1, 5, 3, 7 };
+// permute map
+//
+//  i |  0  1  2  3  4  5  6  7 
+// ------------------------------
+//  0 |  1  0  1  0  1  0  1  0 
+//  1 |  1  1  0  0  1  1  0  0 
+//  2 |  1  1  1  1  0  0  0  0 
+// ------------------------------
+//    |  7  6  5  4  3  2  1  0 
+
+// mirror+permute map
+//
+//  i |  0  1  2  3  4  5  6  7 
+// ------------------------------
+//  0 |  1  1  1  1  0  0  0  0 
+//  1 |  1  1  0  0  1  1  0  0 
+//  2 |  1  0  1  0  1  0  1  0 
+// ------------------------------
+//    |  7  3  5  1  6  2  4  0 
+
+int unsigned const map_mirror  [8] = { 0, 4, 2, 6, 1, 5, 3, 7 };
+int unsigned const map_permute [8] = { 7, 6, 5, 4, 3, 2, 1, 0 };
 
 typedef struct {
   unsigned int cnt;
   unsigned int lnk;
 } rule_element;
 
-void rule2map (int unsigned rule, int unsigned *map, t_rule ca) {
+void rule2map (int unsigned rule, int unsigned *map, t_ca ca) {
   for (int unsigned i=0; i<ca.l; i++) {
     map[i] = rule % ca.k;
     rule   = rule / ca.k;
   }
 }
 
-void map2rule (int unsigned const *map, int unsigned *rule, t_rule ca) {
+void map2rule (int unsigned const *map, int unsigned *rule, t_ca ca) {
   *rule = 0;
   for (int unsigned i=0; i<ca.l; i++) {
     *rule = *rule * ca.k;
-    *rule = *rule + map[i];
+    *rule = *rule + map[ca.l-1-i];
   }
 }
 
-void print_map (int unsigned *map, t_rule ca) {
+void print_map (int unsigned *map, t_ca ca) {
   printf ("map = ");
   for (int unsigned i=0; i<ca.l; i++) {
     printf ("%u ", map[i]);
@@ -79,34 +102,37 @@ void print_map (int unsigned *map, t_rule ca) {
 ////////////////////////////////////////////////////////////////////////////////
 
 // mirror
-int unsigned transform_mirror (int unsigned rule, t_rule ca) {
+int unsigned transform_mirror (int unsigned rule, t_ca ca) {
   int unsigned mpi [ca.l];
   int unsigned mpo [ca.l];
   // convert rule to map
   rule2map (rule, mpi, ca);
   // mirror
   for (int unsigned i=0; i<ca.l; i++) {
-    mpo [i] = mpi[map_mirror [i]];
+    mpo [map_mirror [i]] = mpi[i];
   }
   // convert map to rule
-  map2rule (mpo, &rule, ca);
+  int unsigned ret;
+  map2rule (mpo, &ret, ca);
 
-  return rule;
+  return ret;
 }
 
 // permute
-int unsigned transform_permute (int unsigned rule, t_rule ca) {
-  int unsigned map [ca.l];
+int unsigned transform_permute (int unsigned rule, t_ca ca) {
+  int unsigned mpi [ca.l];
+  int unsigned mpo [ca.l];
   // convert rule to map
-  rule2map (rule, map, ca);
+  rule2map (rule, mpi, ca);
   // permute
   for (int unsigned i=0; i<ca.l; i++) {
-    map [i] = ! map [i];
+    mpo [map_permute [i]] = ! mpi[i];
   }
   // convert map to rule
-  map2rule (map, &rule, ca);
+  int unsigned ret;
+  map2rule (mpo, &ret, ca);
 
-  return rule;
+  return ret;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -114,7 +140,7 @@ int unsigned transform_permute (int unsigned rule, t_rule ca) {
 
 int main () {
   // CA lattice and neigborhood definitions
-  t_rule ca;
+  t_ca ca;
   ca.k = 2;
   ca.n = 3;
   ca.l = ipow (ca.k, ca.n);
@@ -129,18 +155,26 @@ int main () {
     rule_set[i].lnk = i;
     // mirror
     tmp = transform_mirror (i, ca);
+    printf ("mirror  r=%03u, tmp=%03u\n", i, tmp);
     if (tmp<i) {
+      while (rule_set[tmp].cnt == 0) {
+        tmp = rule_set[tmp].lnk;
+      }
+      rule_set[tmp].cnt += rule_set[i].cnt;
+      rule_set[i].cnt = 0;
+      rule_set[i].lnk = tmp;
+    } else {
+    // permute
+    tmp = transform_permute (i, ca);
+    printf ("permute r=%03u, tmp=%03u\n", i, tmp);
+    if (tmp<i) {
+      while (rule_set[tmp].cnt == 0) {
+        tmp = rule_set[tmp].lnk;
+      }
       rule_set[tmp].cnt += rule_set[i].cnt;
       rule_set[i].cnt = 0;
       rule_set[i].lnk = tmp;
     }
-    // permute
-    tmp = transform_permute (i, ca);
-    printf ("r=%03u, tmp=%03u\n", i, tmp);
-    if (tmp<i) {
-      rule_set[tmp].cnt += rule_set[i].cnt;
-      rule_set[i].cnt = 0;
-      rule_set[i].lnk = tmp;
     }
   }
 
@@ -154,6 +188,34 @@ int main () {
   }
   printf ("sum_cnt=%u\n", sum_cnt);
   printf ("equ_cnt=%u\n", equ_cnt);
+
+  // print equivalence table
+  typedef struct {
+    unsigned int set [4];
+    unsigned int cnt;
+  } t_equ_tab;
+
+  t_equ_tab equ_tab [len];
+
+  for (int unsigned i=0; i<len; i++) {
+    equ_tab[i].cnt = 0;
+    tmp = rule_set[i].lnk;
+    equ_tab[tmp].set[equ_tab[tmp].cnt] = i;
+    equ_tab[tmp].cnt++;
+  }
+
+  for (int unsigned i=0; i<len; i++) {
+    for (int unsigned j=0; j<equ_tab[i].cnt; j++) {
+      printf (" %03u", equ_tab[i].set[j]);
+    }
+    printf ("\n");
+  }
+
+  int unsigned i;
+  i = 25;
+  printf ("r=%03u, mirror=%03u, permute=%03u\n", i, transform_mirror (i, ca), transform_permute (i, ca));
+  i = 61;
+  printf ("r=%03u, mirror=%03u, permute=%03u\n", i, transform_mirror (i, ca), transform_permute (i, ca));
 
   return (0);
 }
