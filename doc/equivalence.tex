@@ -1,42 +1,27 @@
-% This is IJUC.TEX the demonstration file of
-% the LaTeX macro package for International Journal of Unconventional Computation,
-% version 0.1 for LaTeX2e
-
 \documentclass{ijuc}
 \usepackage[pdftex]{graphics}
+\usepackage{graphicx}
+\usepackage{amssymb}
 
 \begin{document}
 
-\title{IJUC formatting in \LaTeX}
-
-\author{First Author\inst{1}\email{a1@ijuc.ac.uk}
-\and A. N. Other Author\inst{2} 
-\and Last Author\inst{3}
-}
-
-\institute{Department of Computer Science, University of IJUC, UK
-\and
-Department of Unconventional Computing, University of Elsewhere, USA
-\and
-Department of Biology, University of IJUC, UK
-}
-
+\title{Combinatorial approach to counting equivalence classes in 1D and 2D cellular automata}
+\author{Iztok Jeras\inst{1}\email{iztok.jeras@rattus.info}}
+\institute{Faculty of Computer and Information Science, University of Ljubljana, Slovenia}
 \def\received{Received 17 December 2004; In final form 1 April 2005}
 
 \maketitle
 
-
 \begin{abstract}
-The title of the paper should clearly indicate the scope and findings
-of the paper and should provide an accurate indication of the contents when
-searched by computerized methods.
-The abstract should be 100--150 words, summarizing the significant findings. 
+There is much more theoretical research on 1D cellular automata compared to 2D.
+While not the main reason one of the arguments given is that the number of
+available rules for a common 2D neighborhood is too large for a comprehensive
+analysis. This issue can be mitigated by focusing on the smallest 2D neighborhoods
+(trid and quad) and by grouping rules into equivalence classes. This article
+gives an algebraic combinatorial solution to counting equivalence classes.
 \end{abstract}
 
-\keywords{Six to twelve keywords or phrases, to aid in indexing the article.
-}
-
-
+\keywords{cellular automata, combinatorics, equivalence classes, congruence operations}
 
 \section{Introduction}
 
@@ -46,9 +31,11 @@ suitable for processing with {\tt latex} or {\tt pdflatex}.
 (This example file has a pdf figure example,
 so should be processed with {\tt pdflatex}.)
 
-\section{Formatting instructions}
+\section{Formalization}
 
-\subsection{Figures and Tables}
+\section{Definition of Equivalence}
+
+\subsection{1D problem}
 
 Mention of figures and tables within text: When referring to figures, tables
 and other elements within the text, always call the element by its full name (for
@@ -57,11 +44,44 @@ use ambiguous phraseologies (for example: ``1 illustrates\ldots'') that do not c
 denote the element being referred to.
 
 
-\subsubsection{Figures}
+\subsubsection{Counting neighborhoods}
+
+The set of all distinct neighborhood values for a given neighborhood size and number of cell states is:
+
+\[ \mathbb{M} = \left\{ n : \right\} \]
+\[ \vert \mathbb{M} \vert = k^m \]
+
+Neighborhoods can be organized into subsets depending on their invariance to congruence operations.
+
+There are neighborhoods which are invariant to reflection:
+
+\[ \mathbb{M}_\mathrm{ref} = \left\{ \forall n \in \mathbb{M} : \phi_\mathrm{ref}(n) = n \right\} \]
+\[ \vert \mathbb{M}_\mathrm{ref} \vert = \left\{ 
+  \begin{array}{ll}
+    {k^{m/2+1}} & \quad \textrm{if $m$ is odd }\\
+    {k^{m/2  }} & \quad \textrm{if $m$ is even}
+  \end{array} \right.
+\]
+
+There are no neighborhoods which are invariant to permutation:
+
+\[ \mathbb{M}_\mathrm{per} = \left\{ \forall n \in \mathbb{M} : \phi_\mathrm{per}(n) = n \right\} = \varnothing \]
+\[ \vert \mathbb{M}_\mathrm{per} \vert = 0 \]
+
+There are neighborhoods which are invariant after both reflection and permutation have been applied:
+
+\[ \mathbb{M}_\mathrm{ref,per} = \left\{ \forall n \in \mathbb{M} : \phi_\mathrm{per}(\phi_\mathrm{ref}(n)) = n \right\} \]
+\[ \vert \mathbb{M}_\mathrm{ref,per} \vert = \left\{ 
+  \begin{array}{ll}
+    {0        } & \quad \textrm{if $m$ is odd }\\
+    {k^{m/2  }} & \quad \textrm{if $m$ is even}
+  \end{array} \right.
+\]
+
+\subsubsection{Counting rules}
 
 Tables are numbered consecutively and should include a clear
 descriptive caption (see Figure \ref{fig-eg}).
-
 
 \begin{figure}
 \begin{center}
@@ -147,7 +167,7 @@ Journal title abbreviations should conform to Mathematical Reviews
 Index style.
 
 
-\bibliography{ijuc}
+\bibliography{equivalence}
 
 \appendix 
 
