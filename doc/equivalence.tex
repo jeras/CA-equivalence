@@ -14,7 +14,7 @@
 
 \begin{abstract}
 There is much more theoretical research on 1D cellular automata compared to 2D.
-While not the main reason one of the arguments given is that the number of
+While not the only reason one of the arguments given is that the number of
 available rules for a common 2D neighborhood is too large for a comprehensive
 analysis. This issue can be mitigated by focusing on the smallest 2D neighborhoods
 (trid and quad) and by grouping rules into equivalence classes. This article
@@ -25,28 +25,66 @@ gives an algebraic combinatorial solution to counting equivalence classes.
 
 \section{Introduction}
 
-This describes the IJUC \LaTeX\ style
-class file {\tt ijuc.cls} and the Bib\TeX\ file {\tt ijuc.bst},
-suitable for processing with {\tt latex} or {\tt pdflatex}.
-(This example file has a pdf figure example,
-so should be processed with {\tt pdflatex}.)
+The focus of theorethical research is usually the simplest possible version of a system.
+For 1D CA elementary rules are the simplest which exsibit not trivial behavior. Rule
+equivalence has been used by many authors to organize 256 elementary CA rules into ???
+equivalence classes. Representative rules from each class were then observed and described.
+This approach found the most interesting rules which were then further analyzed. Rule 110
+is a good example.
+
+The same approach was never applied to 2D CA. For example most studied 2D rule is Game of Life.
+It is based on a Moore neighborhood is binary cells. There are $2^{2^9}=2^512$ possible rules,
+too many for a comprehensive ananlysis of the entire rule space. The von Neumann neighborhood
+with $2^{2^5}=2^32$ rules is still impractical, and there is no rule with this neighborhood on
+a binary lattice, whish would receive as much attention as Game of Life. While this two
+neighborhoods were the focus of 2D CA research till recently, there are two simpler neighborhoods
+named quad and trid which were popularized by Tommaso Toffoli only in 2008 using the QUAD prize competition.
+The aim of the QUAD prize was to find a computation-universal 2-state cellular automaton on a 2-dimensional,
+2×2-neighborhood. Edward Powley proved computational universality on an even smaller neighborhood, the trid.
+
+The focus of my CA research are preimages. On 1D CA de Bruijn diagrams are the main tool
+used for this reaseadch. The size of this diagrams depends on the size of the rue space.
+While once the algorithms for calculating preimages are known, the ability to compute
+them is only limited by computer memory, the research of such algorithms usually requires
+the ability of the researcher to model such problems with mathematical notations like
+graphs and matrices. Only with 2D neighborhoods as small as quad and trid such representations
+become small enough for theoretical analysis with the help of visual representations.
+
+The purpose of this article is to calculate the number of equivalence classes for a few small
+neighborhoods on a binary lattice (2D and 3D), which I hope will help further theoretical
+research into 2D CA.
+
+??? Most research on CA was recently done by Hidenosuke Nishio ???.
 
 \section{Formalization}
 
+
+
 \section{Definition of Equivalence}
+
+Two rules are equivalent, if a transformation for the CA state exists, such that each CA
+current-next state pair for the current rule gets transformed into a current-next state pair
+for the other rule.
+
+State transition graphs for equivalend rools are of the same shape, and a trasformation exists
+which maps each state in one graph to a state at the same position in the graph for the other rule.
+
+There are generalizations to this definition. For example a rule and it second order rule can be thought as equivalent.
+(rule performing the same global transition in one step as the original rule achieves in two steps.
 
 \subsection{1D problem}
 
-Mention of figures and tables within text: When referring to figures, tables
-and other elements within the text, always call the element by its full name (for
-example: ``See Table 1,'' ``Figure 1 illustrates\ldots,'' ``Refer to Scheme 1.'' Do not
-use ambiguous phraseologies (for example: ``1 illustrates\ldots'') that do not clearly
-denote the element being referred to.
+Equivalence groups for elementary CA are long known. What is missing is a general algebraic solution.
 
+\subsubsection{Symetries}
+
+There is a set of known symetries or congruence operations on a given CA state.
+For 1D CA this are reflection and permutation.
 
 \subsubsection{Counting neighborhoods}
 
-The set of all distinct neighborhood values for a given neighborhood size and number of cell states is:
+The set of all distinct neighborhood values for a given neighborhood size and
+number of cell states is:
 
 \[ \mathbb{M} = \left\{ n : \right\} \]
 \[ \vert \mathbb{M} \vert = k^m \]
@@ -78,94 +116,13 @@ There are neighborhoods which are invariant after both reflection and permutatio
   \end{array} \right.
 \]
 
+\subsection{2D problem}
+
 \subsubsection{Counting rules}
 
-Tables are numbered consecutively and should include a clear
-descriptive caption (see Figure \ref{fig-eg}).
+\subsubsection{Symetries}
 
-\begin{figure}
-\begin{center}
-\scalebox{0.5}{\includegraphics{union.pdf}}
-\end{center}
-\caption{Example figure, taken from reference \cite{St1}.}
-\label{fig-eg}
-\end{figure}
-
-
-
-
-\subsubsection{Tables}
-
-Tables are numbered consecutively and should include a clear
-descriptive caption. Avoid the use of structural formulas in the body
-of tables. Table footnotes should be given a footnote symbol as explained in
-the Footnotes section, proceeding by row rather than by column order.
-Footnotes within a table should be indicated by the same
-symbols listed above. Reinitialize symbol sequence within tables. Place footnotes
-to a table directly beneath the table. (See Table \ref{tbl-eg}).
-
-
-\begin{table}
-\begin{center}
-\begin{tabular}{|@{\hspace{1mm}}c@{\hspace{1mm}}|c||c|c|@{\hspace{1mm}}c@{\hspace{1mm}}|}\hline
-$X$ range&$R$ values&$\alpha$ \footnotemark[1] & $\mathit{MIL}$ \footnotemark[2]& $\mathit{MaxIL}$\\\hline
-$-8$:20:2& 2.5, 3.0&0.97\footnotemark[3]&500&500\\\hline
-$-8$:30:2&2.5&0.98&1000&1000\\\hline
-\end{tabular}
-\end{center}
-\caption{Example table, excerpted from reference \cite{St2}.\\
-{\footnotesize
-\footnotemark[1]a footnote about $\alpha$;
-\footnotemark[2]in row not column order;
-\footnotemark[3]the last footnote
-}
-} 
-\label{tbl-eg}
-\end{table}
-
-
-
-\subsection{Footnotes}
-
-Authors are encouraged to minimize the use of footnotes. A
-footnote may include the designation of a corresponding author of the paper,
-current address information for an author (if different from that shown in the
-affiliation), and traditional footnote content. 
-
-
-Footnotes are indicated in the text by the following symbols:
-asterisk\footnote{asterisk or star},
-dagger\footnote{dagger}, 
-double dagger\footnote{double dagger}, 
-paragraph mark\footnote{paragraph mark}, 
-section mark\footnote{section mark}, 
-parallels\footnote{parallels}, 
-number sign\footnote{number sign},
-and then their doubled counterparts. 
-
-Numerals are not used for footnote callouts,
-as they may be mistaken for bibliographical reference call-outs or exponents.
-
-
-\section{Acknowledgments}
-
-Information concerning grant
-support of research should appear in a separate Acknowledgments section at
-the end of the paper, not in a footnote. Acknowledgments of the assistance of
-colleagues or similar notes of appreciation also properly belong in an
-Acknowledgments section, not in footnotes.
-
-
-\section{Citing References}
-
-References are indicated in the text by consecutive Arabic numbers
-in brackets. The full list is collected at the end of the paper in numerical
-order. All references in the list should be cited within the text, and vice
-versa. Listed references should be complete in all details, including article
-titles in journals. All authors on each paper should be cited; ``et al.'' is not sufficient.
-Journal title abbreviations should conform to Mathematical Reviews
-Index style.
-
+Symetries for 2D CA are rotation, reflection and permutation.
 
 \bibliography{equivalence}
 
