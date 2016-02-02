@@ -25,8 +25,8 @@ gives an algebraic combinatorial solution to counting equivalence classes.
 
 \section{Introduction}
 
-The focus of theorethical research is usually the simplest possible version of a system.
-For 1D CA elementary rules are the simplest which exsibit not trivial behavior. Rule
+The focus of theoretical research is usually the simplest possible version of a system.
+For 1D CA elementary rules are the simplest which exhibit not trivial behavior. Rule
 equivalence has been used by many authors to organize 256 elementary CA rules into ???
 equivalence classes. Representative rules from each class were then observed and described.
 This approach found the most interesting rules which were then further analyzed. Rule 110
@@ -34,7 +34,7 @@ is a good example.
 
 The same approach was never applied to 2D CA. For example most studied 2D rule is Game of Life.
 It is based on a Moore neighborhood is binary cells. There are $2^{2^9}=2^512$ possible rules,
-too many for a comprehensive ananlysis of the entire rule space. The von Neumann neighborhood
+too many for a comprehensive analysis of the entire rule space. The von Neumann neighborhood
 with $2^{2^5}=2^32$ rules is still impractical, and there is no rule with this neighborhood on
 a binary lattice, whish would receive as much attention as Game of Life. While this two
 neighborhoods were the focus of 2D CA research till recently, there are two simpler neighborhoods
@@ -43,7 +43,7 @@ The aim of the QUAD prize was to find a computation-universal 2-state cellular a
 2×2-neighborhood. Edward Powley proved computational universality on an even smaller neighborhood, the trid.
 
 The focus of my CA research are preimages. On 1D CA de Bruijn diagrams are the main tool
-used for this reaseadch. The size of this diagrams depends on the size of the rue space.
+used for this research. The size of this diagrams depends on the size of the rue space.
 While once the algorithms for calculating preimages are known, the ability to compute
 them is only limited by computer memory, the research of such algorithms usually requires
 the ability of the researcher to model such problems with mathematical notations like
@@ -51,8 +51,11 @@ graphs and matrices. Only with 2D neighborhoods as small as quad and trid such r
 become small enough for theoretical analysis with the help of visual representations.
 
 The purpose of this article is to calculate the number of equivalence classes for a few small
-neighborhoods on a binary lattice (2D and 3D), which I hope will help further theoretical
-research into 2D CA.
+neighborhoods on a binary lattice (2D and 3D). The number of interesting rules can be further
+reduced by removing rules which can be represented with a smaller neighborhood. This are rules
+where one of the neighbors is not used in the local transition function, and higher order rules,
+those that can be represented with multiple steps of a smaller neighborhood rule.
+
 
 ??? Most research on CA was recently done by Hidenosuke Nishio ???.
 
@@ -66,7 +69,7 @@ Two rules are equivalent, if a transformation for the CA state exists, such that
 current-next state pair for the current rule gets transformed into a current-next state pair
 for the other rule.
 
-State transition graphs for equivalend rools are of the same shape, and a trasformation exists
+State transition graphs for equivalent rules are of the same shape, and a transformation exists
 which maps each state in one graph to a state at the same position in the graph for the other rule.
 
 There are generalizations to this definition. For example a rule and it second order rule can be thought as equivalent.
@@ -76,9 +79,9 @@ There are generalizations to this definition. For example a rule and it second o
 
 Equivalence groups for elementary CA are long known. What is missing is a general algebraic solution.
 
-\subsubsection{Symetries}
+\subsubsection{Symmetries}
 
-There is a set of known symetries or congruence operations on a given CA state.
+There is a set of known symmetries or congruence operations on a given CA state.
 For 1D CA this are reflection and permutation.
 
 \subsubsection{Counting neighborhoods}
@@ -122,7 +125,18 @@ There are neighborhoods which are invariant after both reflection and permutatio
 
 \subsubsection{Symetries}
 
-Symetries for 2D CA are rotation, reflection and permutation.
+Symmetries for 2D CA are rotation, reflection and permutation.
+
+\section{Conclusion}
+
+With elementary cellular automata the approach was to observe the evolution of
+each rule and to further study the ones which exhibit interesting behavior.
+A similar approach can be taken with 2D trid and quad. With an appropriate filter
+this evolutions could be made into a video or a 3D image. An example filter would
+convert each 3x3 neighborhood pattern probabilities into a color palette. For trid
+a single person could do the review, while for quad crowd-sourcing could be used.
+
+I hope will help further theoretical research into 2D CA.
 
 \bibliography{equivalence}
 
