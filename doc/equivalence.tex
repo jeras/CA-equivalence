@@ -82,19 +82,22 @@ Equivalence groups for elementary CA are long known. What is missing is a genera
 \subsubsection{Symmetries}
 
 There is a set of known symmetries or congruence operations on a given CA state.
-For 1D CA this are reflection and permutation.
+For 1D CA this are reflection and permutation. 
 
-\subsubsection{Counting neighborhoods}
+\subsubsection{Counting neighborhood values}
 
-The set of all distinct neighborhood values for a given neighborhood size and
-number of cell states is:
+The set of all distinct neighborhood values $\mathbb{M}$ for a given neighborhood size $m$ and
+number of cell states $k$ is:
 
 \[ \mathbb{M} = \left\{ n : \right\} \]
 \[ \vert \mathbb{M} \vert = k^m \]
 
-Neighborhoods can be organized into subsets depending on their invariance to congruence operations.
+Neighborhood values can be organized into subsets depending on their invariance to congruence operations.
 
-There are neighborhoods which are invariant to reflection:
+There are neighborhood values which are invariant to reflection. This are neighborhoos for which the
+left half is the mirror is the mirror image of the right half. There are as many such neighborhood
+values as there are possible values for a half sized neighborhood. For odd neighborhood sizes the middle
+cell is always a mirror image of itself.
 
 \[ \mathbb{M}_\mathrm{ref} = \left\{ \forall n \in \mathbb{M} : \phi_\mathrm{ref}(n) = n \right\} \]
 \[ \vert \mathbb{M}_\mathrm{ref} \vert = \left\{ 
@@ -104,12 +107,12 @@ There are neighborhoods which are invariant to reflection:
   \end{array} \right.
 \]
 
-There are no neighborhoods which are invariant to permutation:
+There are no neighborhood values which are invariant to permutation.
 
 \[ \mathbb{M}_\mathrm{per} = \left\{ \forall n \in \mathbb{M} : \phi_\mathrm{per}(n) = n \right\} = \varnothing \]
 \[ \vert \mathbb{M}_\mathrm{per} \vert = 0 \]
 
-There are neighborhoods which are invariant after both reflection and permutation have been applied:
+There are neighborhood values which are invariant after both reflection and permutation have been applied.
 
 \[ \mathbb{M}_\mathrm{ref,per} = \left\{ \forall n \in \mathbb{M} : \phi_\mathrm{per}(\phi_\mathrm{ref}(n)) = n \right\} \]
 \[ \vert \mathbb{M}_\mathrm{ref,per} \vert = \left\{ 
@@ -119,9 +122,26 @@ There are neighborhoods which are invariant after both reflection and permutatio
   \end{array} \right.
 \]
 
-\subsection{2D problem}
-
 \subsubsection{Counting rules}
+
+Rules which are invariant to reflection. The calculation is based on the number of reflection invariant neightorhood values.
+The local transition function can take any value for $\mathbb{M}_\mathrm{ref}$ while for the rest the same value must be used
+for the the neighborhood value and its reflection.
+
+\[ \mathbb{R}_\mathrm{ref} = \left\{ \forall r \in \mathbb{R} : \phi_\mathrm{ref}(r) = r \right\} \]
+\[ \vert \mathbb{R}_\mathrm{ref} \vert = k^{ \vert \mathbb{M}_\mathrm{ref} \vert + ( \vert \mathbb{M} \vert - \vert \mathbb{M}_\mathrm{ref} \vert ) / 2 } \]
+
+Rules which are invariant to permutation.
+
+k=2
+
+\[ k^{\vert \mathbb{M} \vert / 2} \]
+
+Rules which are invariant to reflection and permutation applied at the same time.
+
+
+
+\subsection{2D problem}
 
 \subsubsection{Symetries}
 
