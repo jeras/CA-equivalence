@@ -2,6 +2,7 @@
 \usepackage[pdftex]{graphics}
 \usepackage{graphicx}
 \usepackage{amssymb}
+\usepackage{hyperref}
 
 \begin{document}
 
@@ -27,7 +28,7 @@ gives an algebraic combinatorial solution to counting equivalence classes.
 
 The focus of theoretical research is usually the simplest possible version of a system.
 For 1D CA elementary rules are the simplest which exhibit not trivial behavior. Rule
-equivalence has been used by many authors to organize 256 elementary CA rules into ???
+equivalence has been used by many authors to organize 256 elementary CA rules into 88
 equivalence classes. Representative rules from each class were then observed and described.
 This approach found the most interesting rules which were then further analyzed. Rule 110
 is a good example.
@@ -56,8 +57,15 @@ reduced by removing rules which can be represented with a smaller neighborhood. 
 where one of the neighbors is not used in the local transition function, and higher order rules,
 those that can be represented with multiple steps of a smaller neighborhood rule.
 
+??? Most research on CA was recently done by Hidenosuke Nishio \cite{DBLP:journals/jca/Nishio12},
+\cite{DBLP:journals/fuin/Nishio10}, \cite{DBLP:conf/ncma/Nishio09}, \cite{DBLP:conf/automata/NishioW08}.
 
-??? Most research on CA was recently done by Hidenosuke Nishio ???.
+Tommaso Toffoli
+\url{http://uncomp.uwe.ac.uk/automata2008/files/quad.pdf}
+
+Edward Powley
+\url{http://uncomp.uwe.ac.uk/automata2008/files/quadprize_powley.pdf}
+
 
 \section{Formalization}
 
@@ -125,7 +133,7 @@ There are neighborhood values which are invariant after both reflection and perm
 \subsubsection{Counting rules}
 
 Rules which are invariant to reflection. The calculation is based on the number of reflection invariant neightorhood values.
-The local transition function can take any value for $\mathbb{M}_\mathrm{ref}$ while for the rest the same value must be used
+The local transition function can take any value for \(\mathbb{M}_\mathrm{ref}\) while for the rest the same value must be used
 for the the neighborhood value and its reflection.
 
 \[ \mathbb{R}_\mathrm{ref} = \left\{ \forall r \in \mathbb{R} : \phi_\mathrm{ref}(r) = r \right\} \]
@@ -133,12 +141,23 @@ for the the neighborhood value and its reflection.
 
 Rules which are invariant to permutation.
 
+\[ \mathbb{R}_\mathrm{per} = \left\{ \forall r \in \mathbb{R} : \phi_\mathrm{per}(r) = r \right\} \]
 k=2
-
-\[ k^{\vert \mathbb{M} \vert / 2} \]
+\[ \vert \mathbb{R}_\mathrm{per} \vert = k^{\vert \mathbb{M} \vert / k} \]
 
 Rules which are invariant to reflection and permutation applied at the same time.
 
+\[ \mathbb{R}_\mathrm{ref,per} = \left\{ \forall n \in \mathbb{R} : \phi_\mathrm{per}(\phi_\mathrm{ref}(r)) = r \right\} \]
+k=2
+\[ \vert \mathbb{R}_\mathrm{ref,per} \vert = k^{\vert \mathbb{M} \vert / k} \]
+
+Then intersections of the above sets must be counted.
+
+Permutation limits the free choice of mappings to half neighborhood values, mirroring further reduces free choice to 
+
+\[ \mathbb{R}_\mathrm{ref} \bigcap \mathbb{R}_\mathrm{per} = \left\{ \forall r \in \mathbb{R} : {\phi_\mathrm{ref}(r) = r} \wedge {\phi_\mathrm{per}(r) = r} \right\} \]
+k=2
+\[ \vert \mathbb{R}_\mathrm{ref} \vert = k^{ \vert \mathbb{M}_\mathrm{ref} \vert + ( \vert \mathbb{M} \vert - \vert \mathbb{M}_\mathrm{ref} \vert ) / 2 } \]
 
 
 \subsection{2D problem}
