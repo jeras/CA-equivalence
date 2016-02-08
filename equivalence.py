@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # CA properties
 k=2 # number of states per cell
 n=3 # number of cells in a neighborhood
@@ -9,14 +11,12 @@ nbh_all = k**n
 N_all = k**nbh_all
 
 # number of neighborhoods which are mirror images of themselves
-# odd neighborhood size
-if (n%2): nbh_sym_mir = k**(n//2+1)
-# even neighborhood size
-else:     nbh_sym_mir = k**(n//2)
+if (n%2): nbh_sym_mir = k**(n/2+1)  # odd  neighborhood size
+else:     nbh_sym_mir = k**(n/2)    # even neighborhood size
 
-# number of neighborhoods where permutation and mirroring map into the same neihgborhood
-if (n%2): nbh_sym_mir_per = 0           # odd  neighborhood size
-else:     nbh_sym_mir_per = k**(n//2)   # even neighborhood size
+# number of neighborhoods where permutation and mirroring (both applied) map into the same neihgborhood
+if (n%2): nbh_sym_mir_per = 0          # odd  neighborhood size
+else:     nbh_sym_mir_per = k**(n/2)   # even neighborhood size
 
 # number of rules which are symmetric to mirroring
 # There are (nbh_all-nbh_sym_mir) neighborhoods which do not mirror into themselves, for rules to be
@@ -58,12 +58,12 @@ print "N_all_calc         = " + str(N_all_calc        )
 print "E                  = " + str(E                 )
 
 
-# list of rules symmetric to either permutation or mirroring
-bin( 23) = '0b 00010111'
-bin( 51) = '0b 00110011'
-bin( 77) = '0b 01001101'
-bin(105) = '0b 01101001'
-bin(232) = '0b 11101000'
-bin(204) = '0b 11001100'
-bin(178) = '0b 10110010'
-bin(150) = '0b 10010110'
+## list of rules symmetric to either permutation or mirroring
+#bin( 23) = '0b 00010111'
+#bin( 51) = '0b 00110011'
+#bin( 77) = '0b 01001101'
+#bin(105) = '0b 01101001'
+#bin(232) = '0b 11101000'
+#bin(204) = '0b 11001100'
+#bin(178) = '0b 10110010'
+#bin(150) = '0b 10010110'
