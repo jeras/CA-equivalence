@@ -66,10 +66,37 @@ Tommaso Toffoli
 Edward Powley
 \url{http://uncomp.uwe.ac.uk/automata2008/files/quadprize_powley.pdf}
 
-
 \section{Formalization}
 
+I will skip the full CA formalization and will focus on aspects observed in this article.
+What needs to be defined is the number of states of a cell, symmetries of the underlying lattice,
+the neighborhood shape, and the rule value.
 
+Each cell \(c\) can be in one of \(k\) states, which are numbered starting with 0.
+\[ c \in {0, 1, ..., k-1} \]
+There are \(k!\) permutations of the state set.
+\[ \vert G^{per} \vert = k! \]
+
+The underlaying lattice can have one or more dimensions. In 1D only reflection symmetry exists,
+while in 2D there is also a 3, 4 or 6 fold rotation simmetry. 3D or lattices with even more
+dimmensions are not discussed here, althoug the same principles can be applied there.
+
+Regardless of the underlying lattice only two reflections, unchanged and mirrored.
+\[ G^{ref} = {if, ref} \]
+\[ \vert G^{ref} \vert = 2 \]
+
+The number of rotations depends on the underlying lattice and is discussed for each neighborhood shape.
+
+The neighborhood is defined by the number of cells \(m\) and its shape.
+Only the trid and quad 2D neighborhoods will be discussed.
+The neighborhood value is an ordered list of cell values.
+\[ n = c_0, c_1, ..., c_{m-1} \]
+
+\subsubsection{1D}
+
+\subsubsection{2D trid}
+
+\subsubsection{2D quad}
 
 \section{Definition of Equivalence}
 
@@ -90,15 +117,25 @@ Equivalence groups for elementary CA are long known. What is missing is a genera
 \subsubsection{Symmetries}
 
 There is a set of known symmetries or congruence operations on a given CA state.
-For 1D CA this are reflection and permutation. 
+For 1D CA this are reflection and permutation.
+
+Reflection:
+
+\[ G_{ref} = (id, ref) \]
+\[ \vert G_{ref} \vert = 2 \]
+
+Permutation:
+
+\[ G_{per} = (id, per) \]
+\[ \vert G_{per} \vert = k! \]
 
 \subsubsection{Counting neighborhood values}
 
-The set of all distinct neighborhood values $\mathbb{M}$ for a given neighborhood size $m$ and
+The set of all distinct neighborhood values $\mathbb{M}$ for a given neighborhood size $n$ and
 number of cell states $k$ is:
 
-\[ \mathbb{M} = \left\{ n : \right\} \]
-\[ \vert \mathbb{M} \vert = k^m \]
+\[ M = \left\{ m : \right\} \]
+\[ \vert \mathbb{M} \vert = k^n \]
 
 Neighborhood values can be organized into subsets depending on their invariance to congruence operations.
 
@@ -132,39 +169,85 @@ There are neighborhood values which are invariant after both reflection and perm
 
 \subsubsection{Counting rules}
 
-Rules which are invariant to reflection. The calculation is based on the number of reflection invariant neightorhood values.
-The local transition function can take any value for \(\mathbb{M}_\mathrm{ref}\) while for the rest the same value must be used
+Number of all rules \(\vert R \vert\):
+
+\[ \vert R \vert = k^{\vert M \vert} = k^{k^n} \]
+
+Rules which are invariant to reflection. The calculation is based on the number of
+reflection invariant neightorhood values. The local transition function can take any
+value for reflection invariant neighborhood values \(M^\mathrm{ref}\) while for the
+rest \(M  \setminus M^\mathrm{ref}\) the same value must be used
 for the the neighborhood value and its reflection.
 
-\[ \mathbb{R}_\mathrm{ref} = \left\{ \forall r \in \mathbb{R} : \phi_\mathrm{ref}(r) = r \right\} \]
-\[ \vert \mathbb{R}_\mathrm{ref} \vert = k^{ \vert \mathbb{M}_\mathrm{ref} \vert + ( \vert \mathbb{M} \vert - \vert \mathbb{M}_\mathrm{ref} \vert ) / 2 } \]
+\[ R^\mathrm{ref} = \left\{ \forall r \in R : \mathrm{ref}(r) = r \right\} \]
+\[ \vert R^\mathrm{ref} \vert = k^{ \vert M^\mathrm{ref} \vert + \frac{\vert M \vert - \vert M^\mathrm{ref} \vert}{2} } = k^{ \frac{\vert M \vert + \vert M^\mathrm{ref} \vert}{2} } \]
+\[ \vert R^\mathrm{ref} \vert = \left\{ 
+  \begin{array}{ll}
+    k^{\frac{k^m + k^{m/2+1}}{2}} & \quad \textrm{if $m$ is odd }\\
+    k^{\frac{k^m + k^{m/2  }}{2}} & \quad \textrm{if $m$ is even}
+  \end{array} \right.
+\]
 
 Rules which are invariant to permutation.
 
-\[ \mathbb{R}_\mathrm{per} = \left\{ \forall r \in \mathbb{R} : \phi_\mathrm{per}(r) = r \right\} \]
-k=2
-\[ \vert \mathbb{R}_\mathrm{per} \vert = k^{\vert \mathbb{M} \vert / k} \]
+\[ R^\mathrm{per} = \left\{ \forall r \in R : \mathrm{per}(r) = r \right\} \]
+\[ \vert R^\mathrm{per} \vert = k^{\vert M \vert / k} \]
 
 Rules which are invariant to reflection and permutation applied at the same time.
+First permutation limits free variables to \(k^{\vert M \vert / k}\), then reflection
+limits them further by allowing a single free variable for all non reflective negighborhood values.
+TODO: check this for correctness.
 
-\[ \mathbb{R}_\mathrm{ref,per} = \left\{ \forall n \in \mathbb{R} : \phi_\mathrm{per}(\phi_\mathrm{ref}(r)) = r \right\} \]
+\[ R^\mathrm{ref \& per} = \left\{ \forall r \in R : \mathrm{per}(\mathrm{ref}(r)) = r \right\} \]
 k=2
-\[ \vert \mathbb{R}_\mathrm{ref,per} \vert = k^{\vert \mathbb{M} \vert / k} \]
+\[ \vert R^\mathrm{ref \& per} \vert = \left\{ 
+  \begin{array}{ll}
+    k^{1 + 1} & \quad \textrm{if $m$ is odd }\\
+    k^{k + 1} & \quad \textrm{if $m$ is even}
+  \end{array} \right.
+\]
+\subsubsection{Counting equivalence classes}
 
-Then intersections of the above sets must be counted.
+\url{https://en.wikipedia.org/wiki/Burnside%27s_lemma}
 
-Permutation limits the free choice of mappings to half neighborhood values, mirroring further reduces free choice to 
+Burnside's lemma is used to count equivalence classes:
 
-\[ \mathbb{R}_\mathrm{ref} \bigcap \mathbb{R}_\mathrm{per} = \left\{ \forall r \in \mathbb{R} : {\phi_\mathrm{ref}(r) = r} \wedge {\phi_\mathrm{per}(r) = r} \right\} \]
-k=2
-\[ \vert \mathbb{R}_\mathrm{ref} \vert = k^{ \vert \mathbb{M}_\mathrm{ref} \vert + ( \vert \mathbb{M} \vert - \vert \mathbb{M}_\mathrm{ref} \vert ) / 2 } \]
+\[ |X/G| = \frac{1}{|G|}\sum_{g \in G}|X^g| \]
 
+where G is 
+\[ G_{ref} = (id, ref) \]
+\[ G_{per} = (id, per) \]
+\[ G = G_{ref} \times G_{per} = (id, ref, per, ref \& per) \]
+
+\[ |X/G| = \frac{1}{2 \times k!} ( R + R^{ref} + (|G^{per}|-1)*(R^{per} + R^{per \& ref}) ) \]
+
+Result for elementary CA (\(k=2\), \(n=3\))
+\[ |X/G| = \frac{1}{4} (2^8 + 2^6 + 2^4 + 2^4) = 88 \]
 
 \subsection{2D problem}
 
 \subsubsection{Symetries}
 
-Symmetries for 2D CA are rotation, reflection and permutation.
+In addition to reflection and permutation symetries already present in 1D CA,
+2D CA also exihibit rotation simetry. The number of available rotations depends
+on the underlaying lattice.
+
+3-fold: trid
+4-fold: quad, Moore, von Neumann neighborhood
+6-fold: hexagonal lattice
+
+\[ G_{rot} = (id, rot) \]
+\[ \vert G_{per} \vert =  \]
+
+Trid:
+
+\[ G_{rot} = (id=rot0, rot1, rot2) \]
+\[ \vert G_{per} \vert = 3 \]
+
+\[ G = G_{ref} \times G_{per} \times G_{rot} = (id, ref, per, ref \& per, rot1, rot1 \& ref, rot1 \& per, rot2, rot2 \& ref, rot2 \& per) \]
+\[ \vert G \vert = 12 \]
+
+\[ |X/G| = \frac{1}{12} (2^8 + 2^6 + 2^4 + 2^4 + 2 (2^4 + 2^4 + 2^2 + 2^2)) = 36 \]
 
 \section{Conclusion}
 
