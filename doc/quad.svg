@@ -69,9 +69,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.9856995"
-     inkscape:cx="247.0867"
-     inkscape:cy="900.51375"
+     inkscape:zoom="2.0303002"
+     inkscape:cx="284.06409"
+     inkscape:cy="888.93758"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -87,8 +87,8 @@
        type="xygrid"
        id="grid4732"
        units="cm"
-       spacingx="62.362205"
-       spacingy="62.362206" />
+       spacingx="31.181103"
+       spacingy="31.181103" />
   </sodipodi:namedview>
   <metadata
      id="metadata4189">
@@ -108,13 +108,13 @@
      id="layer1">
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker5208)"
-       d="m 62.362205,366.37795 436.535435,0"
+       d="m 93.543308,335.19685 436.535432,0"
        id="path4892"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
-       d="m 62.362205,366.37795 0,-311.81102"
+       d="m 93.543308,335.19685 0,-311.811023"
        id="path4894"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
