@@ -37,7 +37,7 @@ The same approach was never applied to 2D CA. For example most studied 2D rule i
 It is based on a Moore neighborhood is binary cells. There are $2^{2^9}=2^512$ possible rules,
 too many for a comprehensive analysis of the entire rule space. The von Neumann neighborhood
 with $2^{2^5}=2^32$ rules is still impractical, and there is no rule with this neighborhood on
-a binary lattice, whish would receive as much attention as Game of Life. While this two
+a binary lattice, which would receive as much attention as Game of Life. While this two
 neighborhoods were the focus of 2D CA research till recently, there are two simpler neighborhoods
 named quad and trid which were popularized by Tommaso Toffoli only in 2008 using the QUAD prize competition.
 The aim of the QUAD prize was to find a computation-universal 2-state cellular automaton on a 2-dimensional,
@@ -73,40 +73,78 @@ What needs to be defined is the number of states of a cell, symmetries of the un
 the neighborhood shape, and the rule value.
 
 Each cell \(c\) can be in one of \(k\) states, which are numbered starting with 0.
-\[ c \in {0, 1, ..., k-1} \]
 There are \(k!\) permutations of the state set.
+\[ c \in {0, 1, ..., k-1} \]
 \[ \vert G^{per} \vert = k! \]
 
 The underlaying lattice can have one or more dimensions. In 1D only reflection symmetry exists,
-while in 2D there is also a 3, 4 or 6 fold rotation simmetry. 3D or lattices with even more
-dimmensions are not discussed here, althoug the same principles can be applied there.
+while in 2D there is also a 3, 4 or 6 fold rotation symmetry. 3D or lattices with even more
+dimensions are not discussed here, although the same principles can be applied there.
 
 Regardless of the underlying lattice only two reflections, unchanged and mirrored.
-\[ G^{ref} = {if, ref} \]
+\[ G^{ref} = (if, ref) \]
 \[ \vert G^{ref} \vert = 2 \]
 
 The number of rotations depends on the underlying lattice and is discussed for each neighborhood shape.
 
 The neighborhood is defined by the number of cells \(m\) and its shape.
 Only the trid and quad 2D neighborhoods will be discussed.
-The neighborhood value is an ordered list of cell values.
-\[ n = c_0, c_1, ..., c_{m-1} \]
+The neighborhood value is an ordered list of cell values. There are \(k^m\) possible neighborhood values.
+\[ n = (c_0, c_1, ..., c_{m-1}) \]
 
-\subsubsection{1D}
+The local transition function maps a neighborhood state into the next state of a cell.
+\[ f(n) = c_n \]
+It is defined by as many cell values as there are neighborhood values.
+\[ r = (f(0), f(1), ..., f(k^m)) \]
 
-\subsubsection{2D trid}
+The relative position between a call and its neighborhood is not relevant for this article.
+But to understand the symmetries it is important to formalize the positions of cells inside a neighborhood.
 
-\includegraphics[scale=0.5]{trid.eps}
+\subsection{1D}
 
-\subsubsection{2D quad}
+For 1D CA cells inside a neighborhood are numbered from left to right (see Figure \ref{fig-linear}).
 
-\includegraphics[scale=0.5]{quad.eps}
+\begin{figure}
+\begin{center}
+\scalebox{0.3}{\includegraphics{linear.eps}}
+\end{center}
+\caption{Elementary neighborhood on a linear lattice.}
+\label{fig-linear}
+\end{figure}
+
+\subsection{2D trid}
+
+Due to symmetries all enumerations of neighborhood cells for trid are equivalent.
+Here enumeration starts in the left bottom corner and continues in a counter clockwise loop (see Figure \ref{fig-trid}).
+
+\begin{figure}
+\begin{center}
+\scalebox{0.3}{\includegraphics{trid.eps}}
+\end{center}
+\caption{Trid neighborhood on a hexagonal lattice.}
+\label{fig-trid}
+\end{figure}
+
+\subsection{2D quad}
+
+To simplify the representation of rotations enumeration for quad also starts
+in the left bottom corner and continues in a counter clockwise loop (see Figure \ref{fig-quad}).
+
+\begin{figure}
+\begin{center}
+\scalebox{0.3}{\includegraphics{quad.eps}}
+\end{center}
+\caption{Quad neighborhood on a square lattice.}
+\label{fig-quad}
+\end{figure}
 
 \section{Definition of Equivalence}
 
-Two rules are equivalent, if a transformation for the CA state exists, such that each CA
-current-next state pair for the current rule gets transformed into a current-next state pair
+Two rules \( r_{A}, r_{B} \) are equivalent, if a transformation \(\varphi\) for the CA state exists, such that each CA
+current-next state pair \( (C^{t}, C^{t+1}) \) for the current rule gets transformed into a current-next state pair
 for the other rule.
+
+\[ r_{A} \sim r_{B}  \Leftrightarrow  \forall C_{B}=\varphi(C_{A}) : F_{B}=\varphi(F_{A}) : F_{A}(C_{A}^{t}) = C_{A}^{t+1}, F_{B}(C_{B}^{t}) = C_{B}^{t+1} : C_{A}^{t+1} = C_{B}^{t+1} \]
 
 State transition graphs for equivalent rules are of the same shape, and a transformation exists
 which maps each state in one graph to a state at the same position in the graph for the other rule.
@@ -143,7 +181,7 @@ number of cell states $k$ is:
 
 Neighborhood values can be organized into subsets depending on their invariance to congruence operations.
 
-There are neighborhood values which are invariant to reflection. This are neighborhoos for which the
+There are neighborhood values which are invariant to reflection. This are neighborhoods for which the
 left half is the mirror is the mirror image of the right half. There are as many such neighborhood
 values as there are possible values for a half sized neighborhood. For odd neighborhood sizes the middle
 cell is always a mirror image of itself.
@@ -178,7 +216,7 @@ Number of all rules \(\vert R \vert\):
 \[ \vert R \vert = k^{\vert M \vert} = k^{k^n} \]
 
 Rules which are invariant to reflection. The calculation is based on the number of
-reflection invariant neightorhood values. The local transition function can take any
+reflection invariant neighborhood values. The local transition function can take any
 value for reflection invariant neighborhood values \(M^\mathrm{ref}\) while for the
 rest \(M  \setminus M^\mathrm{ref}\) the same value must be used
 for the the neighborhood value and its reflection.
@@ -199,7 +237,7 @@ Rules which are invariant to permutation.
 
 Rules which are invariant to reflection and permutation applied at the same time.
 First permutation limits free variables to \(k^{\vert M \vert / k}\), then reflection
-limits them further by allowing a single free variable for all non reflective negighborhood values.
+limits them further by allowing a single free variable for all non reflective neighborhood values.
 TODO: check this for correctness.
 
 \[ R^\mathrm{ref \& per} = \left\{ \forall r \in R : \mathrm{per}(\mathrm{ref}(r)) = r \right\} \]
@@ -230,10 +268,10 @@ Result for elementary CA (\(k=2\), \(n=3\))
 
 \subsection{2D problem}
 
-\subsubsection{Symetries}
+\subsubsection{Symmetries}
 
-In addition to reflection and permutation symetries already present in 1D CA,
-2D CA also exihibit rotation simetry. The number of available rotations depends
+In addition to reflection and permutation symmetries already present in 1D CA,
+2D CA also exhibit rotation symmetry. The number of available rotations depends
 on the underlaying lattice.
 
 3-fold: trid
@@ -259,7 +297,7 @@ With elementary cellular automata the approach was to observe the evolution of
 each rule and to further study the ones which exhibit interesting behavior.
 A similar approach can be taken with 2D trid and quad. With an appropriate filter
 this evolutions could be made into a video or a 3D image. An example filter would
-convert each 3x3 neighborhood pattern probabilities into a color palette. For trid
+convert each 3×3 neighborhood pattern probabilities into a color palette. For trid
 a single person could do the review, while for quad crowd-sourcing could be used.
 
 I hope will help further theoretical research into 2D CA.
