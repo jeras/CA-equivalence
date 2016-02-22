@@ -3,6 +3,9 @@
 \usepackage{graphicx}
 \usepackage{amssymb}
 \usepackage{hyperref}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{siunitx}
 
 \begin{document}
 
@@ -152,11 +155,11 @@ which maps each state in one graph to a state at the same position in the graph 
 There are generalizations to this definition. For example a rule and it second order rule can be thought as equivalent.
 (rule performing the same global transition in one step as the original rule achieves in two steps.
 
-\subsection{1D problem}
+\section{1D problem}
 
 Equivalence groups for elementary CA are long known. What is missing is a general algebraic solution.
 
-\subsubsection{Symmetries}
+\subsection{Symmetries}
 
 There is a set of known symmetries or congruence operations on a given CA state.
 For 1D CA this are reflection and permutation.
@@ -171,7 +174,7 @@ Permutation:
 \[ G_{per} = (id, per) \]
 \[ \vert G_{per} \vert = k! \]
 
-\subsubsection{Counting neighborhood values}
+\subsection{Counting neighborhood values}
 
 The set of all distinct neighborhood values $\mathbb{M}$ for a given neighborhood size $n$ and
 number of cell states $k$ is:
@@ -209,7 +212,7 @@ There are neighborhood values which are invariant after both reflection and perm
   \end{array} \right.
 \]
 
-\subsubsection{Counting rules}
+\subsection{Counting rules}
 
 Number of all rules \(\vert R \vert\):
 
@@ -248,7 +251,7 @@ k=2
     k^{k + 1} & \quad \textrm{if $m$ is even}
   \end{array} \right.
 \]
-\subsubsection{Counting equivalence classes}
+\subsection{Counting equivalence classes}
 
 \url{https://en.wikipedia.org/wiki/Burnside%27s_lemma}
 
@@ -266,9 +269,9 @@ where G is
 Result for elementary CA (\(k=2\), \(n=3\))
 \[ |X/G| = \frac{1}{4} (2^8 + 2^6 + 2^4 + 2^4) = 88 \]
 
-\subsection{2D problem}
+\section{2D problem}
 
-\subsubsection{Symmetries}
+\subsection{Symmetries}
 
 In addition to reflection and permutation symmetries already present in 1D CA,
 2D CA also exhibit rotation symmetry. The number of available rotations depends
@@ -281,15 +284,94 @@ on the underlaying lattice.
 \[ G_{rot} = (id, rot) \]
 \[ \vert G_{per} \vert =  \]
 
-Trid:
+\subsection{Trid}
 
+\begin{table}
+\begin{center}
+\begin{tabular}{cc|cc|cc|cc}
+\multicolumn{2}{c|}{} & \multicolumn{2}{c|}{per} & \multicolumn{2}{c|}{ref} & \multicolumn{2}{c}{per,ref} \\ \hline
+000 & 0               &       111  &       7     &       000  &       0     &       111  &       7        \\
+001 & 1               &       110  &       6     &       100  &       4     &       011  &       3        \\
+010 & 2               &       101  &       5     &       010  &       2     &       101  &       5        \\
+011 & 3               &       100  &       4     &       110  &       6     & \sout{001} & \sout{1}       \\
+100 & 4               & \sout{011} & \sout{3}    & \sout{001} & \sout{1}    &       110  &       6        \\
+101 & 5               & \sout{010} & \sout{2}    &       101  &       5     & \sout{010} & \sout{2}       \\
+110 & 6               & \sout{001} & \sout{1}    & \sout{011} & \sout{3}    & \sout{100} & \sout{4}       \\
+111 & 7               & \sout{000} & \sout{0}    &       111  &       7     & \sout{000} & \sout{0}       \\
+\end{tabular}
+\begin{tabular}{cc|cc|cc|cc}
+\multicolumn{2}{c|}{rot1} & \multicolumn{2}{c|}{rot1,per} & \multicolumn{2}{c|}{rot1,ref} & \multicolumn{2}{c}{rot1,per,ref} \\ \hline
+      000  &       0      &       111  &       7          &       000  &       0          &       111  &       7             \\
+\sout{010} & \sout{2}     &       101  &       5          &       001  &       1          &       110  &       6             \\
+\sout{100} & \sout{4}     & \sout{011} & \sout{3}         &       100  &       4          &       011  &       3             \\
+      110  &       6      & \sout{001} & \sout{1}         &       101  &       5          & \sout{010} & \sout{2}            \\
+      001  &       1      & \sout{110} & \sout{6}         & \sout{010} & \sout{2}         &       101  &       5             \\
+\sout{011} & \sout{3}     & \sout{100} & \sout{4}         & \sout{011} & \sout{3}         & \sout{100} & \sout{4}            \\
+\sout{101} & \sout{5}     & \sout{010} & \sout{2}         &       110  &       6          & \sout{001} & \sout{1}            \\
+      111  &       7      & \sout{000} & \sout{0}         &       111  &       7          & \sout{000} & \sout{0}            \\
+\end{tabular}
+\begin{tabular}{cc|cc|cc|cc}
+\multicolumn{2}{c|}{rot2} & \multicolumn{2}{c|}{rot2,per} & \multicolumn{2}{c|}{rot2,ref} & \multicolumn{2}{c}{rot2,per,ref} \\ \hline
+      000  &       0      &       111  &       7          &       000  &       0          &       111  &       7             \\
+\sout{100} & \sout{4}     &       011  &       3          &       010  &       2          &       101  &       5             \\
+\sout{001} & \sout{1}     & \sout{110} & \sout{6}         & \sout{001} & \sout{1}         &       110  &       6             \\
+\sout{101} & \sout{5}     & \sout{010} & \sout{2}         &       011  &       3          &       100  &       4             \\
+\sout{010} & \sout{2}     & \sout{101} & \sout{5}         &       100  &       4          & \sout{011} & \sout{3}            \\
+\sout{110} & \sout{6}     & \sout{001} & \sout{1}         &       110  &       6          & \sout{001} & \sout{1}            \\
+\sout{011} & \sout{3}     & \sout{100} & \sout{4}         & \sout{101} & \sout{5}         & \sout{010} & \sout{2}            \\
+      111  &       7      & \sout{000} & \sout{0}         &       111  &       7          & \sout{000} & \sout{0}            \\
+\end{tabular}
+\end{center}
+\caption{My caption}
+\label{tbl-trid}
+\end{table}
+
+Counter clockwise rotations for \SI{120}{\degree}.
 \[ G_{rot} = (id=rot0, rot1, rot2) \]
-\[ \vert G_{per} \vert = 3 \]
+\[ \vert G_{rot} \vert = 3 \]
 
-\[ G = G_{ref} \times G_{per} \times G_{rot} = (id, ref, per, ref \& per, rot1, rot1 \& ref, rot1 \& per, rot2, rot2 \& ref, rot2 \& per) \]
+\[ G = G_{ref} \times G_{per} \times G_{rot} \]
 \[ \vert G \vert = 12 \]
 
-\[ |X/G| = \frac{1}{12} (2^8 + 2^6 + 2^4 + 2^4 + 2 (2^4 + 2^4 + 2^2 + 2^2)) = 36 \]
+\[ |X/G| = \frac{1}{12} \left( (2^8 + 2^6 + 2^4 + 2^4) + (2^4 + 2^2 + 2^6 + 2^4) + (2^2 + 2^2 + 2^6 + 2^4) \right) = 45 \]
+
+\subsection{Quad}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{cc|cc|cc|cc}
+\multicolumn{2}{c|}{} & \multicolumn{2}{c|}{per} & \multicolumn{2}{c|}{ref} & \multicolumn{2}{c}{per,ref} \\ \hline
+0000 & 0              &       1111  &       F    &       0000  &       0     &       1111  &       F        \\
+0001 & 1              &       1110  &       E    &       1000  &       8     &       0111  &       7        \\
+0010 & 2              &       1101  &       D    &       0100  &       4     &       1011  &       B        \\
+0011 & 3              &       1100  &       C    &       1100  &       C     &       0011  &       3        \\
+0100 & 4              &       1011  &       B    & \sout{0010} & \sout{2}    &       1101  &       D        \\
+0101 & 5              &       1010  &       A    &       1010  &       A     &       0101  &       5        \\
+0110 & 6              &       1001  &       9    & \sout{0110} & \sout{6}    &       1001  &       9        \\
+0111 & 7              &       1000  &       8    &       1110  &       E     & \sout{0001} & \sout{1}       \\
+1000 & 8              & \sout{0111} & \sout{7}   & \sout{0001} & \sout{1}    &       1110  &       E        \\
+1001 & 9              & \sout{0110} & \sout{6}   &       1001  &       9     & \sout{0110} & \sout{6}       \\
+1010 & A              & \sout{0101} & \sout{5}   & \sout{0101} & \sout{5}    &       1010  &       A        \\
+1011 & B              & \sout{0100} & \sout{4}   &       1101  &       D     & \sout{0010} & \sout{2}       \\
+1100 & C              & \sout{0011} & \sout{3}   & \sout{0011} & \sout{3}    &       1100  &       C        \\
+1101 & D              & \sout{0010} & \sout{2}   &       1011  &       B     & \sout{0100} & \sout{4}       \\
+1110 & E              & \sout{0001} & \sout{1}   & \sout{0111} & \sout{7}    & \sout{1000} & \sout{8}       \\
+1111 & F              & \sout{0000} & \sout{0}   &       1111  &       F     & \sout{0000} & \sout{0}       \\
+\end{tabular}
+\end{center}
+\caption{My caption}
+\label{tbl-quad}
+\end{table}
+
+
+Counter clockwise rotations for \SI{90}{\degree}.
+\[ G_{rot} = (id=rot0, rot1, rot2, rot3) \]
+\[ \vert G_{rot} \vert = 4 \]
+
+\[ G = G_{ref} \times G_{per} \times G_{rot} \]
+\[ \vert G \vert = 16 \]
+
+\[ |X/G| = \frac{1}{16} \left( (2^{16} + 2^8 + 2^{10} + 2^{10}) + (...) + (...) \right) = ... \]
 
 \section{Conclusion}
 
