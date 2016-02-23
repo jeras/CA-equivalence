@@ -290,36 +290,36 @@ on the underlaying lattice.
 \begin{center}
 \begin{tabular}{cc|cc|cc|cc}
 \multicolumn{2}{c|}{} & \multicolumn{2}{c|}{per} & \multicolumn{2}{c|}{ref} & \multicolumn{2}{c}{per,ref} \\ \hline
-000 & 0               &       111  &       7     &       000  &       0     &       111  &       7        \\
-001 & 1               &       110  &       6     &       100  &       4     &       011  &       3        \\
-010 & 2               &       101  &       5     &       010  &       2     &       101  &       5        \\
-011 & 3               &       100  &       4     &       110  &       6     & \sout{001} & \sout{1}       \\
-100 & 4               & \sout{011} & \sout{3}    & \sout{001} & \sout{1}    &       110  &       6        \\
-101 & 5               & \sout{010} & \sout{2}    &       101  &       5     & \sout{010} & \sout{2}       \\
-110 & 6               & \sout{001} & \sout{1}    & \sout{011} & \sout{3}    & \sout{100} & \sout{4}       \\
-111 & 7               & \sout{000} & \sout{0}    &       111  &       7     & \sout{000} & \sout{0}       \\
+000 & 0               &       111  &       7  0  &       000  &       0     &       111  &       7  0     \\
+001 & 1               &       110  &       6  1  &       100  &       4  1  &       011  &       3  1     \\
+010 & 2               &       101  &       5  2  &       010  &       2     &       101  &       5  2     \\
+011 & 3               &       100  &       4  3  &       110  &       6  3  & \sout{001} & \sout{1} 3     \\
+100 & 4               & \sout{011} & \sout{3} 4  & \sout{001} & \sout{1} 4  &       110  &       6  4     \\
+101 & 5               & \sout{010} & \sout{2} 5  &       101  &       5     & \sout{010} & \sout{2} 5     \\
+110 & 6               & \sout{001} & \sout{1} 6  & \sout{011} & \sout{3} 6  & \sout{100} & \sout{4} 6     \\
+111 & 7               & \sout{000} & \sout{0} 7  &       111  &       7     & \sout{000} & \sout{0} 7     \\
 \end{tabular}
 \begin{tabular}{cc|cc|cc|cc}
 \multicolumn{2}{c|}{rot1} & \multicolumn{2}{c|}{rot1,per} & \multicolumn{2}{c|}{rot1,ref} & \multicolumn{2}{c}{rot1,per,ref} \\ \hline
-      000  &       0      &       111  &       7          &       000  &       0          &       111  &       7             \\
-\sout{010} & \sout{2}     &       101  &       5          &       001  &       1          &       110  &       6             \\
-\sout{100} & \sout{4}     & \sout{011} & \sout{3}         &       100  &       4          &       011  &       3             \\
-      110  &       6      & \sout{001} & \sout{1}         &       101  &       5          & \sout{010} & \sout{2}            \\
-      001  &       1      & \sout{110} & \sout{6}         & \sout{010} & \sout{2}         &       101  &       5             \\
-\sout{011} & \sout{3}     & \sout{100} & \sout{4}         & \sout{011} & \sout{3}         & \sout{100} & \sout{4}            \\
-\sout{101} & \sout{5}     & \sout{010} & \sout{2}         &       110  &       6          & \sout{001} & \sout{1}            \\
-      111  &       7      & \sout{000} & \sout{0}         &       111  &       7          & \sout{000} & \sout{0}            \\
+      000  &       0      &       111  &       7  0         &       000  &       0          &       111  &       7  0          \\
+\sout{010} & \sout{2} 1 4 &       101  &       5  1 4 3 2 6 &       001  &       1          &       110  &       6  1          \\
+\sout{100} & \sout{4} 2 1 & \sout{011} & \sout{3} 2 ...     &       100  &       4  2       &       011  &       3  2          \\
+      110  &       6  3 5 & \sout{001} & \sout{1} 3 ...     & \sout{101} & \sout{5} 3       & \sout{010} & \sout{2} 3          \\
+      001  &       1  4 2 & \sout{110} & \sout{6} 4 ...     & \sout{010} & \sout{2} 4       &       101  &       5  4          \\
+\sout{011} & \sout{3} 5 6 & \sout{100} & \sout{4} 5 ...     &       011  &       3  5       & \sout{100} & \sout{4} 5          \\
+\sout{101} & \sout{5} 6 3 & \sout{010} & \sout{2} 6 ...     &       110  &       6          & \sout{001} & \sout{1} 6          \\
+      111  &       7      & \sout{000} & \sout{0} 7 ...     &       111  &       7          & \sout{000} & \sout{0} 7          \\
 \end{tabular}
 \begin{tabular}{cc|cc|cc|cc}
 \multicolumn{2}{c|}{rot2} & \multicolumn{2}{c|}{rot2,per} & \multicolumn{2}{c|}{rot2,ref} & \multicolumn{2}{c}{rot2,per,ref} \\ \hline
-      000  &       0      &       111  &       7          &       000  &       0          &       111  &       7             \\
-\sout{100} & \sout{4}     &       011  &       3          &       010  &       2          &       101  &       5             \\
-\sout{001} & \sout{1}     & \sout{110} & \sout{6}         & \sout{001} & \sout{1}         &       110  &       6             \\
-\sout{101} & \sout{5}     & \sout{010} & \sout{2}         &       011  &       3          &       100  &       4             \\
-\sout{010} & \sout{2}     & \sout{101} & \sout{5}         &       100  &       4          & \sout{011} & \sout{3}            \\
-\sout{110} & \sout{6}     & \sout{001} & \sout{1}         &       110  &       6          & \sout{001} & \sout{1}            \\
-\sout{011} & \sout{3}     & \sout{100} & \sout{4}         & \sout{101} & \sout{5}         & \sout{010} & \sout{2}            \\
-      111  &       7      & \sout{000} & \sout{0}         &       111  &       7          & \sout{000} & \sout{0}            \\
+      000  &       0      &       111  &       7  0         &       000  &       0          &       111  &       7  0          \\
+\sout{100} & \sout{4} 1 2 &       011  &       3  1 2 6 4 5 &       010  &       2  1       &       101  &       5  1          \\
+\sout{001} & \sout{1} 2 4 & \sout{110} & \sout{6} 2 ...     & \sout{001} & \sout{1} 2       &       110  &       6  2          \\
+      101  &       5  3 6 & \sout{010} & \sout{2} 3 ...     &       011  &       3          &       100  &       4  3          \\
+      010  &       2  4 1 & \sout{101} & \sout{5} 4 ...     &       100  &       4          & \sout{011} & \sout{3} 4          \\
+\sout{110} & \sout{6} 5 3 & \sout{001} & \sout{1} 5 ...     &       110  & \sout{6} 5       & \sout{001} & \sout{1} 5          \\
+\sout{011} & \sout{3} 6 5 & \sout{100} & \sout{4} 6 ...     & \sout{101} &       5  6       & \sout{010} & \sout{2} 6          \\
+      111  &       7      & \sout{000} & \sout{0} 7 ...     &       111  &       7          & \sout{000} & \sout{0} 7          \\
 \end{tabular}
 \end{center}
 \caption{My caption}
@@ -333,36 +333,53 @@ Counter clockwise rotations for \SI{120}{\degree}.
 \[ G = G_{ref} \times G_{per} \times G_{rot} \]
 \[ \vert G \vert = 12 \]
 
-\[ |X/G| = \frac{1}{12} \left( (2^8 + 2^6 + 2^4 + 2^4) + (2^4 + 2^2 + 2^6 + 2^4) + (2^2 + 2^2 + 2^6 + 2^4) \right) = 45 \]
-
+\[ |X/G| = \frac{1}{12} \left( (2^8 + 2^6 + 2^4 + 2^4) + 2 (2^4 + 2^2 + 2^6 + 2^4) \right) = 36 \]
 \subsection{Quad}
 
 \begin{table}
 \begin{center}
 \begin{tabular}{cc|cc|cc|cc}
 \multicolumn{2}{c|}{} & \multicolumn{2}{c|}{per} & \multicolumn{2}{c|}{ref} & \multicolumn{2}{c}{per,ref} \\ \hline
-0000 & 0              &       1111  &       F    &       0000  &       0     &       1111  &       F        \\
-0001 & 1              &       1110  &       E    &       1000  &       8     &       0111  &       7        \\
-0010 & 2              &       1101  &       D    &       0100  &       4     &       1011  &       B        \\
-0011 & 3              &       1100  &       C    &       1100  &       C     &       0011  &       3        \\
-0100 & 4              &       1011  &       B    & \sout{0010} & \sout{2}    &       1101  &       D        \\
-0101 & 5              &       1010  &       A    &       1010  &       A     &       0101  &       5        \\
-0110 & 6              &       1001  &       9    & \sout{0110} & \sout{6}    &       1001  &       9        \\
-0111 & 7              &       1000  &       8    &       1110  &       E     & \sout{0001} & \sout{1}       \\
-1000 & 8              & \sout{0111} & \sout{7}   & \sout{0001} & \sout{1}    &       1110  &       E        \\
-1001 & 9              & \sout{0110} & \sout{6}   &       1001  &       9     & \sout{0110} & \sout{6}       \\
-1010 & A              & \sout{0101} & \sout{5}   & \sout{0101} & \sout{5}    &       1010  &       A        \\
-1011 & B              & \sout{0100} & \sout{4}   &       1101  &       D     & \sout{0010} & \sout{2}       \\
-1100 & C              & \sout{0011} & \sout{3}   & \sout{0011} & \sout{3}    &       1100  &       C        \\
-1101 & D              & \sout{0010} & \sout{2}   &       1011  &       B     & \sout{0100} & \sout{4}       \\
-1110 & E              & \sout{0001} & \sout{1}   & \sout{0111} & \sout{7}    & \sout{1000} & \sout{8}       \\
-1111 & F              & \sout{0000} & \sout{0}   &       1111  &       F     & \sout{0000} & \sout{0}       \\
+0000 & 0              &       1111  &       F  0 &       0000  &       0     &       1111  &       F  0     \\
+0001 & 1              &       1110  &       E  1 &       1000  &       8  1  &       0111  &       7  1     \\
+0010 & 2              &       1101  &       D  2 &       0100  &       4  2  &       1011  &       B  2     \\
+0011 & 3              &       1100  &       C  3 &       1100  &       C  3  &       0011  &       3        \\
+0100 & 4              &       1011  &       B  4 & \sout{0010} & \sout{2} 4  &       1101  &       D  4     \\
+0101 & 5              &       1010  &       A  5 &       1010  &       A  5  &       0101  &       5        \\
+0110 & 6              &       1001  &       9  6 &       0110  &       6  6  &       1001  &       9  6     \\
+0111 & 7              &       1000  &       8  7 &       1110  &       E  7  & \sout{0001} & \sout{1} 7     \\
+1000 & 8              & \sout{0111} & \sout{7} 8 & \sout{0001} & \sout{1} 8  &       1110  &       E  8     \\
+1001 & 9              & \sout{0110} & \sout{6} 9 &       1001  &       9     & \sout{0110} & \sout{6} 9     \\
+1010 & A              & \sout{0101} & \sout{5} A & \sout{0101} & \sout{5} A  &       1010  &       A        \\
+1011 & B              & \sout{0100} & \sout{4} B &       1101  &       D  B  & \sout{0010} & \sout{2} B     \\
+1100 & C              & \sout{0011} & \sout{3} C & \sout{0011} & \sout{3} C  &       1100  &       C        \\
+1101 & D              & \sout{0010} & \sout{2} D & \sout{1011} & \sout{B} D  & \sout{0100} & \sout{4} D     \\
+1110 & E              & \sout{0001} & \sout{1} E & \sout{0111} & \sout{7} E  & \sout{1000} & \sout{8} E     \\
+1111 & F              & \sout{0000} & \sout{0} F &       1111  &       F     & \sout{0000} & \sout{0} F     \\
+\end{tabular}
+\begin{tabular}{cc|cc|cc|cc}
+\multicolumn{2}{c|}{rot1} & \multicolumn{2}{c|}{rot1,per} & \multicolumn{2}{c|}{rot1,ref} & \multicolumn{2}{c}{rot1,per,ref} \\ \hline
+0000 & 0              &       1111  &       F  0     &       0000  &       0     &       1111  &       F  0     \\
+0010 & 2 1 4 8        &       1101  &       D  1 4 7 &       0001  &       1     &       1110  &       E  1     \\
+0100 & 4 2 8 1        &       1011  &       B  2 8 E &       1000  &       8  2  &       0111  &       7  2     \\
+0110 & 6 3 C 9        &       1001  &       9  3 C 6 &       1001  &       9  3  &       0110  &       6  3     \\
+1000 & 8 4 1 2        &       0111  &       7  4 1 D & \sout{0100} &       4     &       1011  &       B  4     \\
+1010 & A 5            &       0101  &       5        &       0101  &       5     &       1010  &       A  5     \\
+1100 & C 6 9 3        &       0011  &       3  6 9 C &       1100  &       C  6  &       0011  & \sout{3} 6     \\
+1110 & E 7 D B        &       0001  &       1  7 D 4 &       1101  &       D  7  & \sout{0010} & \sout{2} 7     \\
+0001 & 1 8 2 4        & \sout{1110} & \sout{E} 8 2 B & \sout{0010} & \sout{2} 8  &       1101  &       D  8     \\
+0011 & 3 9 6 C        & \sout{1100} & \sout{C} 9 6 3 &       0011  & \sout{3} 9  & \sout{1100} &       C  9     \\
+0101 & 5 A            &       1010  &       A        & \sout{1010} &       A     &       0101  & \sout{5} A     \\
+0111 & 7 B E D        & \sout{1000} & \sout{8} B E 2 &       1011  &       B     & \sout{0100} & \sout{4} B     \\
+1001 & 9 C 3 6        & \sout{0110} & \sout{6} C 3 9 & \sout{0110} & \sout{6} C  &       1001  & \sout{9} C     \\
+1011 & B D 7 E        & \sout{0100} & \sout{4} D 7 1 & \sout{0111} & \sout{7} D  & \sout{1000} & \sout{8} D     \\
+1101 & D E B 7        & \sout{0010} & \sout{2} E B 8 & \sout{1110} &       E     & \sout{0001} & \sout{1} E     \\
+1111 & F              & \sout{0000} & \sout{0} F     &       1111  &       F     & \sout{0000} & \sout{0} F     \\
 \end{tabular}
 \end{center}
 \caption{My caption}
 \label{tbl-quad}
 \end{table}
-
 
 Counter clockwise rotations for \SI{90}{\degree}.
 \[ G_{rot} = (id=rot0, rot1, rot2, rot3) \]
@@ -371,7 +388,11 @@ Counter clockwise rotations for \SI{90}{\degree}.
 \[ G = G_{ref} \times G_{per} \times G_{rot} \]
 \[ \vert G \vert = 16 \]
 
-\[ |X/G| = \frac{1}{16} \left( (2^{16} + 2^8 + 2^{10} + 2^{10}) + (...) + (...) \right) = ... \]
+\[ |X/G| = \frac{1}{16} \left( (2^{16} + 2^8 + 2^{10} + 2^{10}) + 3 (2^{2+2/2+12/4} + 2^{2+2/2+12/4} + 2^{8/2}) \right) = ... \]
+\[ |X/G| = \frac{1}{16} \left( (2^{16} + 2^8 + 2^{10} + 2^{10}) + 3 (2^{2+1+3}      + 2^{2+1+3}      + 2^{4}  ) \right) = ... \]
+\[ |X/G| = \frac{1}{16} \left( (2^{16} + 2^8 + 2^{10} + 2^{10}) + 3 (2^{6}          + 2^{8}          + 2^{4}  ) \right) = ... \]
+\[ |X/G| =              \left( (2^{12} + 2^4 + 2^6 + 2^6) + 3 (2^2 + 2^8 + 2^0) \right) = ... \]
+\[ |X/G| =              \left( (2^{12} + 16 + 128) + 3 (4 + 156 + 1) + \right) = 4723 \]
 
 \section{Conclusion}
 
