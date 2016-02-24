@@ -1,0 +1,179 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[slovene]{babel}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{enumitem}
+
+\topmargin=0cm
+\topskip=0cm
+\textheight=25cm
+\headheight=0cm
+\headsep=0cm
+\oddsidemargin=0cm
+\evensidemargin=0cm
+\textwidth=16cm
+\parindent=0cm
+\parskip=12pt
+
+\renewcommand{\baselinestretch}{1.2}
+
+\begin{document}
+
+\noindent
+% IZPOLNI KANDIDAT
+Iztok Jeras\\
+Vpisna številka: 60606060\\
+Dvorakova ulica 11, 1000 Ljubljana\\
+Slovenija
+
+
+\bigskip
+
+{\bf Komisija za študijske zadeve}\\
+Univerza v Ljubljani, Fakulteta za računalništvo in informatiko\\
+Večna pot 113, 1000 Ljubljana\\
+
+{\Large\bf
+{\centering
+    Vloga za prijavo teme magistrskega dela \\%[2mm]
+\large Kandidat: Iztok Jeras \\[10mm]}}
+
+
+Podpisani/-a študent/-ka magistrskega programa na Fakulteti za računalništvo in informatiko, zaprošam Komisijo za študijske zadeve, da odobri temo dela, podrobno opisanega v nadaljnjem predlogu teme magistrskega dela.
+
+Okvirni naslov magistrskega dela:
+
+\hfill\begin{minipage}{\dimexpr\textwidth-2cm}
+slovensko: {\bf Predslike 2D celičnih avtomatov}\\
+angleško: {\bf Preimages of 2D cellular automata}
+\end{minipage}
+
+Za mentorja/mentorico predlagam:
+
+\hfill\begin{minipage}{\dimexpr\textwidth-2cm}
+Branko Šter, prof. dr. \\
+Fakulteta za računalništvo in informatiko \\
+branko.ster@fri.uni-lj.si
+\end{minipage}
+
+Za somentorja/somentorico predlagam:
+
+\hfill\begin{minipage}{\dimexpr\textwidth-2cm}
+Ime in priimek, naziv: \\
+Ustanova: \\
+Elektronski naslov: \\
+\end{minipage}
+
+% Izpolnite zgolj v primeru pisanja v tujem jeziku:
+Komisijo zaprošam, da odobri pisanje magistrskega dela v angleškem jeziku z obrazložitvijo ... .
+
+
+
+\bigskip
+
+V Ljubljani, dne …………………………
+
+Podpis mentorja: \hspace{180px} Podpis kandidata/kandidatke:
+
+
+
+
+\clearpage
+\section*{PREDLOG TEME MAGISTRSKEGA DELA}
+
+\section{Področje magistrskega dela}
+
+slovensko: diskretni dinamični sistemi, celični avtomati, teoretična študija \\
+angleško: discrete dynamic systems, cellular automata, theoretical study
+
+
+\section{Ključne besede}
+
+slovensko: celični avtomati, predslike, reverzibilnost, trid, quad   \\
+angleško: cellular automata, preimages, reversibility, Garden of Eden,  trid, quad
+
+
+\section{Opis teme magistrskega dela}
+
+\subsection{Uvod in opis problema}
+
+Ker lahko vsak univerzalen sistem modelira vsak drugi univerzalen sistem, predpostavimo,
+da lahko s celičnimi avtomati modeliramo vesolje. Pri tem mene najbolj zanimaja pogled s
+stališča informacijske teorije in termodinamike. Kakor primera bi lahko navedel kopiranje informacij
+(DNK, evolucija /cite{evoloop}), ter model gravitacije kakor entropijske sile (Entropic gravity).
+
+Informacijsko dinamiko celičnega avtomata se najpogosteje opisuje samo kakor reverzibilno ali ireverzibilno,
+obstajajo tudi nekaj člankov, ki opazujejo enropijo sistema.
+Pogosto je opazovanje dinamike delcev pri Game of Life ali elementarnem pravilu 110.
+Ne obstaja pa še splošna teorija dinamike informacij v celičnem avtomatu.
+
+Cilj te naloge je opis algoritma, ki omogoča iskanje predslik (preteklih stanj) sistema, torej evolucijo
+ireverzibilnega celičnega avtomata v nasprotno smer od definicije časa.
+
+\subsection{Pregled sorodnih del}
+
+Paulina Léon in Genaro Martínez \cite{PaulinaGenaro2016} poizkušata aplicirati
+de Bruijn-ove diagrame na 2D celične avtomate. Točneje opazujeta dva celična avtomata:
+'Game of Life' in 'Diffusion rule', s poudarkom na opazovanju stabilnih delcev.
+
+Razni avtorji \cite{Hartman2013} iščejo 'Garden of Eden' vzorce v 'Game of Life'.
+Zanimiv je pristop z teorijo končnih avtomatov in regularnih jezikov, ki je v
+osnovi namenjen eno dimenzionalnim sistemom. Jean Hardouin-Duparc \cite{} ga je razširil
+tako, da je vrstice 2D polja uporabil kakor simbole v regularnem jeziku, zaporedje več
+vrstic pa predstavlja besedo. Podoben pristop nameravam uporabiti tudi sam.
+
+Opiral se bom tudi na ideje iz svojih prejšnjih prispevkov \cite{Jeras2007}
+\cite{DBLP:conf/iccS/JerasD06} \cite{DBLP:conf/automata/Jeras08},
+ki so analizirali problem v eni dimenziji.
+
+\subsection{Predvideni prispevki magistrske naloge}
+
+Doslej sem že razvil napredne algoritme za izračun predslik 1D sistema.
+Skozi zgodovino so taki algoritmi napredovali, tako da je padala njihova
+procesna zahtevnost in opisna/implementacijska zahtevnost.
+\begin{enumerate}[noitemsep,nolistsep]
+\item 'brute force' algoritmi \( O(c^n) \)
+\item improvizirani algoritmi
+\item zasnove matematičnega modela
+\item optimalni algoritmi \( O(n \log(n)) \) ali celo \( O(n) \)
+\end{enumerate}
+Iskanje slik 2D sistema je trenutno nekje med improvizacijo in matematičnim modelom.
+Z magistersko nalogo bi rad razvil algoritme, ki se nagibajo k optimalnosti.
+
+\subsection{Metodologija}
+
+Magistersko delo bo obsegalo matematičen model, ki bo za lažje razumevanje tudi grafično predstavljen.
+Algoritem bo implementiran kakor računalniški program, ki bo omogočal tudi izris grafične prestavitve
+problema. Primerjava s sorodnimi deli bo s stališča procesne zahtevnosi algoritma, in glede na to
+katere znane probleme bo algoritem sposoben rešiti. Nekaj takih problemov urejenih glede na zahtevnost je:
+\begin{enumerate}[noitemsep,nolistsep]
+\item določitev ali obstajajo predslike za dano trenutno stanje sistema
+\item štetje predslik
+\item naštevanje konfiguracij predslik
+\item jezik vseh stanj brez predslik
+\item vprašanje reverzibilnosti sistema
+\item vprašanje univerzalnosti sistema
+\end{enumerate}
+
+\subsection{Literatura in viri}
+\label{literatura}
+
+%Navodilo:
+Tu navedite vse vire, ki jih citirate v predlogu teme. Citiranje naj bo v skladu z
+znanstveno-strokovnimi standardi citiranja, na primer, \cite{Zivkovic2004}.
+Seznam naj vsebuje vsaj nekaj del, objavljenih v zadnjih petih letih.
+Prednostno naj bodo navedene objave s konferenc, revij, oziroma drugih priznanih virov.
+
+\renewcommand\refname{}
+\vspace{-50px}
+\bibliographystyle{elsarticle-num}
+\bibliography{bibliography}
+
+
+\bigskip
+
+Ljubljana, \today .
+
+\end{document}
