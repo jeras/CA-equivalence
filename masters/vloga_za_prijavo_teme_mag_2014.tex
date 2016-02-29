@@ -23,67 +23,56 @@
 \begin{document}
 
 \noindent
-% IZPOLNI KANDIDAT
-Iztok Jeras\\
-Vpisna številka: 63030393\\
-Dvorakova ulica 11, 1000 Ljubljana\\
-Slovenija
-
-
-\bigskip
-
-{\bf Komisija za študijske zadeve}\\
-Univerza v Ljubljani, Fakulteta za računalništvo in informatiko\\
-Večna pot 113, 1000 Ljubljana\\
-
-{\Large\bf
-{\centering
-    Vloga za prijavo teme magistrskega dela \\%[2mm]
-\large Kandidat: Iztok Jeras \\[10mm]}}
-
-
-Podpisani študent magistrskega programa na Fakulteti za računalništvo in informatiko,
-zaprošam Komisijo za študijske zadeve, da odobri temo dela, podrobno opisanega v nadaljnjem predlogu teme magistrskega dela.
-
-Okvirni naslov magistrskega dela:
-
-\hfill\begin{minipage}{\dimexpr\textwidth-2cm}
-slovensko: {\bf Predslike 2D celičnih avtomatov}\\
-angleško: {\bf Preimages of 2D cellular automata}
-\end{minipage}
-
-Za mentorja predlagam:
-
-\hfill\begin{minipage}{\dimexpr\textwidth-2cm}
-Branko Šter, prof. dr. \\
+Katedra za računalniško logiko, sisteme in mreže \\
 Fakulteta za računalništvo in informatiko \\
-branko.ster@fri.uni-lj.si
-\end{minipage}
-
-Za somentorja predlagam (še čakamo na uradno potrditev):
-
-\hfill\begin{minipage}{\dimexpr\textwidth-2cm}
-Genaro Juárez Martínez, prof. dr. \\
-University of the West of England (UWE) \\
-genaro.martinez@uwe.ac.uk \\
-\end{minipage}
-
-% Izpolnite zgolj v primeru pisanja v tujem jeziku:
-Komisijo zaprošam, da odobri pisanje magistrskega dela v angleškem jeziku, da bi ga lahko neprevedenega bral somentor iz tuje univerze.
-
-
+Univerza v Ljubljani
 
 \bigskip
+{\bf Komisija za študijske zadeve}
 
-V Ljubljani, dne …………………………
+\bigskip
+29. februar 2016
 
-Podpis mentorja: \hspace{180px} Podpis kandidata:
+\bigskip
+\begin{center}
+{\Large\bf Predlog teme za magistersko nalogo}
+\end{center}
 
+\begin{description}[align=left,labelwidth=3cm,noitemsep,nolistsep]
+\item [Naslov:]   Predslike 2D celičnih avtomatov
+\item [Title:]    Preimages of 2D cellular automata
+\\
+\item [Kandidat:] Iztok Jeras
+\\
+\item [Tema naloge:] Razišči problem iskanja predslik 2D celičnih avtomatov
+s pomočjo De Bruijn-ovih diagramov, opiraj se na znane rešiteve za 1D problem.
+Poišči algoritem za določitev obstoja predslik in algoritem za njihovo preštevanje ter izpis.
+Algoritem naj bo matematično formuliran z enačbami in grafično predstavitvijo,
+in naj obsega programsko opremo, ki implementira zahtevane algoritme.
+S stališča procesne kompleksnosti primerjaj novo razviti algoritem z obstoječimi algoritmi,
+ki se uporabljajo za iskanje Garden of Eden stanj v celičnem avtomatomatu Game of Life.
+\end{description}
+
+{\bf Predsednik komisije za oceno in zagovor:}
+\begin{description}[align=left,labelwidth=4cm,noitemsep,nolistsep]
+\item [Predsednik:] prof. dr. Miha Mraz (FRI)
+
+\item [Člani:] prof. dr. Andrej Dobnikar (FRI)
+
+\item [Predlagani člani:] prof. dr. Alojzij Franc Kodre (FMF)
+\item []                  prof. dr. Tomaž Prosen (FMF)
+\item []                  doc. dr. Tomaž Rejec (FMF)
+\end{description}
+
+\bigskip
+{\bf Predstojnik katedre:}
+
+\bigskip
+prof. dr. Miha Mraz
 
 
 
 \clearpage
-\section*{PREDLOG TEME MAGISTRSKEGA DELA}
 
 \section{Področje magistrskega dela}
 
@@ -97,14 +86,14 @@ slovensko: celični avtomati, predslike, reverzibilnost, trid, quad   \\
 angleško: cellular automata, preimages, reversibility, Garden of Eden,  trid, quad
 
 
-\section{Opis teme magistrskega dela}
+\section{Utemeljitev teme magistrskega dela}
 
 \subsection{Uvod in opis problema}
 
 Ker lahko vsak univerzalen sistem modelira vsak drugi univerzalen sistem, predpostavimo,
 da lahko s celičnimi avtomati modeliramo vesolje. Pri tem mene najbolj zanima pogled s
 stališča informacijske teorije in termodinamike. Kakor primera bi lahko navedel kopiranje informacij
-(DNK, evolucija \cite{Salzberg2004}), ter model gravitacije kakor entropijske sile (Entropic gravity).
+(DNK, evolucija \cite{Salzberg2004}), ter model gravitacije kakor entropijske sile (Entropic gravity \cite{Verlinde2010}).
 
 Informacijsko dinamiko celičnega avtomata se najpogosteje opisuje samo kakor reverzibilno ali ireverzibilno,
 obstaja tudi nekaj člankov, ki opazujejo entropijo sistema.
@@ -178,7 +167,7 @@ Predvidevam, da bom uspel rešiti še problem preštevanja predslik, in ker je t
 
 Preostalih problemov se tokrat ne bom loteval.
 Problem jezika stanj brez predslik bi potreboval model 2D formalnega jezika, ki še ne obstaja.
-Poleg tega je povezan s problemom reverzibilnosti, ki je na spološno dokazano nerešljiv, podobno kakor problem tlakovanja (Wang tile).
+Poleg tega je povezan s problemom reverzibilnosti, ki je na spološno dokazano nerešljiv \cite{Kari1989}, podobno kakor problem tlakovanja (Wang tile).
 
 \subsection{Literatura in viri}
 \label{literatura}
@@ -187,10 +176,5 @@ Poleg tega je povezan s problemom reverzibilnosti, ki je na spološno dokazano n
 \vspace{-50px}
 \bibliographystyle{elsarticle-num}
 \bibliography{vloga_za_prijavo_teme_mag_2014}
-
-
-\bigskip
-
-Ljubljana, \today .
 
 \end{document}
