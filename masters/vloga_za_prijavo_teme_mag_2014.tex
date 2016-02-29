@@ -42,7 +42,8 @@ Večna pot 113, 1000 Ljubljana\\
 \large Kandidat: Iztok Jeras \\[10mm]}}
 
 
-Podpisani/-a študent/-ka magistrskega programa na Fakulteti za računalništvo in informatiko, zaprošam Komisijo za študijske zadeve, da odobri temo dela, podrobno opisanega v nadaljnjem predlogu teme magistrskega dela.
+Podpisani študent magistrskega programa na Fakulteti za računalništvo in informatiko,
+zaprošam Komisijo za študijske zadeve, da odobri temo dela, podrobno opisanega v nadaljnjem predlogu teme magistrskega dela.
 
 Okvirni naslov magistrskega dela:
 
@@ -51,7 +52,7 @@ slovensko: {\bf Predslike 2D celičnih avtomatov}\\
 angleško: {\bf Preimages of 2D cellular automata}
 \end{minipage}
 
-Za mentorja/mentorico predlagam:
+Za mentorja predlagam:
 
 \hfill\begin{minipage}{\dimexpr\textwidth-2cm}
 Branko Šter, prof. dr. \\
@@ -59,10 +60,10 @@ Fakulteta za računalništvo in informatiko \\
 branko.ster@fri.uni-lj.si
 \end{minipage}
 
-Za somentorja/somentorico predlagam:
+Za somentorja predlagam:
 
 \hfill\begin{minipage}{\dimexpr\textwidth-2cm}
-Genaro Juárez Martínez \\
+Genaro Juárez Martínez, prof. dr. \\
 University of the West of England (UWE) \\
 genaro.martinez@uwe.ac.uk \\
 \end{minipage}
@@ -76,7 +77,7 @@ Komisijo zaprošam, da odobri pisanje magistrskega dela v angleškem jeziku, da 
 
 V Ljubljani, dne …………………………
 
-Podpis mentorja: \hspace{180px} Podpis kandidata/kandidatke:
+Podpis mentorja: \hspace{180px} Podpis kandidata:
 
 
 
@@ -101,39 +102,40 @@ angleško: cellular automata, preimages, reversibility, Garden of Eden,  trid, q
 \subsection{Uvod in opis problema}
 
 Ker lahko vsak univerzalen sistem modelira vsak drugi univerzalen sistem, predpostavimo,
-da lahko s celičnimi avtomati modeliramo vesolje. Pri tem mene najbolj zanimaja pogled s
+da lahko s celičnimi avtomati modeliramo vesolje. Pri tem mene najbolj zanima pogled s
 stališča informacijske teorije in termodinamike. Kakor primera bi lahko navedel kopiranje informacij
 (DNK, evolucija \cite{Salzberg2004}), ter model gravitacije kakor entropijske sile (Entropic gravity).
 
 Informacijsko dinamiko celičnega avtomata se najpogosteje opisuje samo kakor reverzibilno ali ireverzibilno,
-obstajajo tudi nekaj člankov, ki opazujejo enropijo sistema.
+obstaja tudi nekaj člankov, ki opazujejo entropijo sistema.
 Pogosto je tudi opazovanje dinamike delcev pri Game of Life ali elementarnem pravilu 110.
 Ne obstaja pa še splošna teorija dinamike informacij v celičnem avtomatu.
 
-V svojem članku \cite{JerasDobnikar2007}, sem grafično upodobil predslike trenutnega stanja za 1D problem.
-Iz upodobitve je videti, da se ponekod izbubi več informacije kakor drugod,
-kar kaže na možnost izpeljave kvalitativne in kvantitativne teorije dinamike informacij, žal se ta možnost še ni udejanila.
+V svojem članku \cite{JerasDobnikar2007} sem grafično upodobil predslike trenutnega stanja za 1D problem.
+Iz upodobitve je videti, da se ponekod izgbubi več informacije kakor drugod,
+kar kaže na možnost izpeljave kvalitativne in kvantitativne teorije dinamike informacij;
+žal se ta možnost še ni udejanila.
 
 Cilj te naloge je opis algoritma, ki omogoča iskanje predslik (preteklih stanj) sistema, torej evolucijo
 ireverzibilnega celičnega avtomata v nasprotno smer od definicije časa.
-Upodobitev predlik 2D sistema bo razžiritev upodobitve za 1D sistem
+Upodobitev predslik 2D sistema bo razširitev upodobitve za 1D sistem
 in bo ponujala podoben vpogled v dinamiko informacij 2D sistema.
 
 \subsection{Pregled sorodnih del}
 
 Paulina Léon in Genaro Martínez \cite{PaulinaGenaro2016} poizkušata aplicirati
-De Bruijn-ove diagrame na 2D celične avtomate. Točneje opazujeta dva celična avtomata:
+De Bruijn-ove diagrame na 2D celične avtomate. Točneje, opazujeta dva celična avtomata:
 'Game of Life' in 'Diffusion rule', s poudarkom na opazovanju stabilnih delcev.
 De Bruijn-ovi grafi so tudi osnova mojih raziskav, so pa drugače grafično upodobljeni,
-tako da se jih lahko poveže v opis celotnega celularnega sistema, in niso omejeni na
+tako da se jih lahko poveže v opis celotnega celičnega sistema, in niso omejeni na
 opis predstanj ene same celice.
 
-Razni avtorji \cite{Hartman2013} iščejo 'Garden of Eden' vzorce v 'Game of Life'.
-Zanimiv je pristop z teorijo končnih avtomatov in regularnih jezikov, ki je v
+Razni avtorji \cite{Hartman2013} iščejo vzorce tipa 'Garden of Eden' v celičnem avtomatu 'Game of Life'.
+Zanimiv je pristop s teorijo končnih avtomatov in regularnih jezikov, ki je v
 osnovi namenjen eno dimenzionalnim sistemom. Jean Hardouin-Duparc ga je razširil
-tako, da je vrstice 2D polja uporabil kakor simbole v regularnem jeziku, zaporedje več
+tako, da je celice iz vrstice 2D polja združil v simbole regularnega jezika, zaporedje več
 vrstic pa predstavlja besedo. Originalni članek je v francoščini, zato še iščem članek,
-kjer bi pristop opisal v Angleščini. Podoben pristop s končnimi avtomati nameravam uporabiti tudi sam.
+kjer bi pristop opisal v angleščini. Podoben pristop s končnimi avtomati nameravam uporabiti tudi sam.
 
 Opiral se bom tudi na ideje iz svojih prejšnjih prispevkov \cite{JerasDobnikar2007}
 \cite{DBLP:conf/iccS/JerasD06} \cite{DBLP:conf/automata/Jeras08},
@@ -151,20 +153,20 @@ procesna zahtevnost in opisna/implementacijska zahtevnost.
 \item optimalni algoritmi \( O(n \log(n)) \) ali celo \( O(n) \)
 \end{enumerate}
 Iskanje slik 2D sistema je trenutno nekje med improvizacijo in matematičnim modelom.
-Z magistersko nalogo bi rad razvil algoritme, ki se nagibajo k optimalnosti.
+Z magistrsko nalogo bi rad razvil algoritme, ki se nagibajo k optimalnosti.
 
 \subsection{Metodologija}
 
-Magistersko delo bo obsegalo matematičen model, ki bo predvidoma temeljiv na matričnih operacijah,
+Magistrsko delo bo obsegalo matematičen model, ki bo predvidoma temeljil na matričnih operacijah,
 kjer matrike predstavljajo grafe in končne avtomate.
 Za lažje razumevanje bo problem tudi grafično predstavljen.
-Algoritem bo implementiran kakor računalniški program, ki bo omogočal tudi izris grafične prestavitve
+Algoritem bo implementiran kot računalniški program, ki bo omogočal tudi izris grafične predstavitve
 problema.
 
-Primerjava s sorodnimi deli bo s stališča procesne zahtevnosi algoritma in glede na to
-katere znane probleme bo algoritem sposoben rešiti. Nekaj takih problemov urejenih glede na zahtevnost je:
+Primerjava s sorodnimi deli bo s stališča procesne zahtevnosi algoritma in glede na to,
+katere znane probleme bo algoritem sposoben rešiti. Nekaj takih problemov, urejenih glede na zahtevnost, je:
 \begin{enumerate}[noitemsep,nolistsep]
-\item določitev ali obstajajo predslike za dano trenutno stanje sistema
+\item določitev, ali obstajajo predslike za dano trenutno stanje sistema
 \item štetje predslik
 \item naštevanje konfiguracij predslik
 \item jezik vseh stanj brez predslik
