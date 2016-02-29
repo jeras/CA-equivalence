@@ -68,7 +68,7 @@ genaro.martinez@uwe.ac.uk \\
 \end{minipage}
 
 % Izpolnite zgolj v primeru pisanja v tujem jeziku:
-Komisijo zaprošam, da odobri pisanje magistrskega dela v angleškem jeziku, da bi jo lahko neprevedeno bral somentor iz tuje univerze.
+Komisijo zaprošam, da odobri pisanje magistrskega dela v angleškem jeziku, da bi ga lahko neprevedenega bral somentor iz tuje univerze.
 
 
 
@@ -110,20 +110,30 @@ obstajajo tudi nekaj člankov, ki opazujejo enropijo sistema.
 Pogosto je tudi opazovanje dinamike delcev pri Game of Life ali elementarnem pravilu 110.
 Ne obstaja pa še splošna teorija dinamike informacij v celičnem avtomatu.
 
+V svojem članku \cite{JerasDobnikar2007}, sem grafično upodobil predslike trenutnega stanja za 1D problem.
+Iz upodobitve je videti, da se ponekod izbubi več informacije kakor drugod,
+kar kaže na možnost izpeljave kvalitativne in kvantitativne teorije dinamike informacij, žal se ta možnost še ni udejanila.
+
 Cilj te naloge je opis algoritma, ki omogoča iskanje predslik (preteklih stanj) sistema, torej evolucijo
 ireverzibilnega celičnega avtomata v nasprotno smer od definicije časa.
+Upodobitev predlik 2D sistema bo razžiritev upodobitve za 1D sistem
+in bo ponujala podoben vpogled v dinamiko informacij 2D sistema.
 
 \subsection{Pregled sorodnih del}
 
 Paulina Léon in Genaro Martínez \cite{PaulinaGenaro2016} poizkušata aplicirati
-de Bruijn-ove diagrame na 2D celične avtomate. Točneje opazujeta dva celična avtomata:
+De Bruijn-ove diagrame na 2D celične avtomate. Točneje opazujeta dva celična avtomata:
 'Game of Life' in 'Diffusion rule', s poudarkom na opazovanju stabilnih delcev.
+De Bruijn-ovi grafi so tudi osnova mojih raziskav, so pa drugače grafično upodobljeni,
+tako da se jih lahko poveže v opis celotnega celularnega sistema, in niso omejeni na
+opis predstanj ene same celice.
 
 Razni avtorji \cite{Hartman2013} iščejo 'Garden of Eden' vzorce v 'Game of Life'.
 Zanimiv je pristop z teorijo končnih avtomatov in regularnih jezikov, ki je v
 osnovi namenjen eno dimenzionalnim sistemom. Jean Hardouin-Duparc ga je razširil
 tako, da je vrstice 2D polja uporabil kakor simbole v regularnem jeziku, zaporedje več
-vrstic pa predstavlja besedo. Podoben pristop nameravam uporabiti tudi sam.
+vrstic pa predstavlja besedo. Originalni članek je v francoščini, zato še iščem članek,
+kjer bi pristop opisal v Angleščini. Podoben pristop s končnimi avtomati nameravam uporabiti tudi sam.
 
 Opiral se bom tudi na ideje iz svojih prejšnjih prispevkov \cite{JerasDobnikar2007}
 \cite{DBLP:conf/iccS/JerasD06} \cite{DBLP:conf/automata/Jeras08},
@@ -145,9 +155,13 @@ Z magistersko nalogo bi rad razvil algoritme, ki se nagibajo k optimalnosti.
 
 \subsection{Metodologija}
 
-Magistersko delo bo obsegalo matematičen model, ki bo za lažje razumevanje tudi grafično predstavljen.
+Magistersko delo bo obsegalo matematičen model, ki bo predvidoma temeljiv na matričnih operacijah,
+kjer matrike predstavljajo grafe in končne avtomate.
+Za lažje razumevanje bo problem tudi grafično predstavljen.
 Algoritem bo implementiran kakor računalniški program, ki bo omogočal tudi izris grafične prestavitve
-problema. Primerjava s sorodnimi deli bo s stališča procesne zahtevnosi algoritma in glede na to
+problema.
+
+Primerjava s sorodnimi deli bo s stališča procesne zahtevnosi algoritma in glede na to
 katere znane probleme bo algoritem sposoben rešiti. Nekaj takih problemov urejenih glede na zahtevnost je:
 \begin{enumerate}[noitemsep,nolistsep]
 \item določitev ali obstajajo predslike za dano trenutno stanje sistema
@@ -155,8 +169,14 @@ katere znane probleme bo algoritem sposoben rešiti. Nekaj takih problemov ureje
 \item naštevanje konfiguracij predslik
 \item jezik vseh stanj brez predslik
 \item vprašanje reverzibilnosti sistema
-\item vprašanje univerzalnosti sistema
 \end{enumerate}
+
+Rešitev problema določitve obstoja predslik si že predstavljam. 
+Predvidevam, da bom uspel rešiti še problem preštevanja predslik, in ker je to manjši korak, tudi njihovo naštevanje.
+
+Preostalih problemov se tokrat ne bom loteval.
+Problem jezika stanj brez predslik bi potreboval model 2D formalnega jezika, ki še ne obstaja.
+Poleg tega je povezan s problemom reverzibilnosti, ki je na spološno dokazano nerešljiv, podobno kakor problem tlakovanja (Wang tile).
 
 \subsection{Literatura in viri}
 \label{literatura}
