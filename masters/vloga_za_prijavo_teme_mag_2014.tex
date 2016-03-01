@@ -44,6 +44,8 @@ Univerza v Ljubljani
 \\
 \item [Kandidat:] Iztok Jeras
 \\
+\item [Mentor:]   prof. dr. Branko Šter
+\\
 \item [Tema naloge:] Razišči problem iskanja predslik 2D celičnih avtomatov
 s pomočjo De Bruijn-ovih diagramov, opiraj se na znane rešiteve za 1D problem.
 Poišči algoritem za določitev obstoja predslik in algoritem za njihovo preštevanje ter izpis.
@@ -58,7 +60,7 @@ ki se uporabljajo za iskanje Garden of Eden stanj v celičnem avtomatomatu Game 
 \item [Predsednik:] prof. dr. Miha Mraz
 
 \item [Člani:]      prof. dr. Andrej Dobnikar
-\item []            prof. dr. Branko Šter (mentor)
+\item []            prof. dr. Branko Šter
 \end{description}
 
 \bigskip
@@ -67,28 +69,12 @@ ki se uporabljajo za iskanje Garden of Eden stanj v celičnem avtomatomatu Game 
 \bigskip
 prof. dr. Miha Mraz
 
-
-
 \clearpage
 
-\section{Področje magistrskega dela}
-
-slovensko: diskretni dinamični sistemi, celični avtomati, teoretična študija \\
-angleško: discrete dynamic systems, cellular automata, theoretical study
-
-
-\section{Ključne besede}
-
-slovensko: celični avtomati, predslike, reverzibilnost, trid, quad   \\
-angleško: cellular automata, preimages, reversibility, Garden of Eden,  trid, quad
-
-
-\section{Utemeljitev teme magistrskega dela}
-
-\subsection{Uvod in opis problema}
+{\bf Utemeljitev teme}
 
 Ker lahko vsak univerzalen sistem modelira vsak drugi univerzalen sistem, predpostavimo,
-da lahko s celičnimi avtomati modeliramo vesolje. Pri tem mene najbolj zanima pogled s
+da lahko z univerzalnimi celičnimi avtomati modeliramo vesolje. Pri tem mene najbolj zanima pogled s
 stališča informacijske teorije in termodinamike. Kakor primera bi lahko navedel kopiranje informacij
 (DNK, evolucija \cite{Salzberg2004}), ter model gravitacije kakor entropijske sile (Entropic gravity \cite{Verlinde2010}).
 
@@ -96,8 +82,8 @@ Informacijsko dinamiko celičnega avtomata se najpogosteje opisuje samo kakor re
 obstaja tudi nekaj člankov, ki opazujejo entropijo sistema.
 Pogosto je tudi opazovanje dinamike delcev pri Game of Life ali elementarnem pravilu 110.
 Ne obstaja pa še splošna teorija dinamike informacij v celičnem avtomatu.
-
-V svojem članku \cite{JerasDobnikar2007} sem grafično upodobil predslike trenutnega stanja za 1D problem.
+V svojem članku \cite{JerasDobnikar2007} in prispevkinh na konferencah \cite{DBLP:conf/iccS/JerasD06, DBLP:conf/automata/Jeras08},
+sem grafično upodobil predslike trenutnega stanja za 1D problem.
 Iz upodobitve je videti, da se ponekod izgubi več informacije kakor drugod,
 kar kaže na možnost izpeljave kvalitativne in kvantitativne teorije dinamike informacij;
 žal se ta možnost še ni udejanila.
@@ -107,15 +93,17 @@ ireverzibilnega celičnega avtomata v nasprotno smer od definicije časa.
 Upodobitev predslik 2D sistema bo razširitev upodobitve za 1D sistem
 in bo ponujala podoben vpogled v dinamiko informacij 2D sistema.
 
-\subsection{Pregled sorodnih del}
+\bigskip
 
+Literaturo bom izbiral predvsem iz publikacije {\it Journal of Cellular Automata},
+nekaj nove litarature si bom poiskal še iz skupine raziskovalcev celičnega avtomata
+Game of Life, njihovih publikacij doslej še nisem spremljal.
 Paulina Léon in Genaro Martínez \cite{PaulinaGenaro2016} poizkušata aplicirati
-De Bruijn-ove diagrame na 2D celične avtomate. Točneje, opazujeta dva celična avtomata:
-'Game of Life' in 'Diffusion rule', s poudarkom na opazovanju stabilnih delcev.
-De Bruijn-ovi grafi so tudi osnova mojih raziskav, so pa drugače grafično upodobljeni,
-tako da se jih lahko poveže v opis celotnega celičnega sistema, in niso omejeni na
-opis predstanj ene same celice.
-
+De Bruijn-ove diagrame na 2D celične avtomate, doslej je bilo to orodje uporabljeno le na 1D problemih.
+Točneje, opazujeta dva celična avtomata:'Game of Life' in 'Diffusion rule',
+s poudarkom na opazovanju stabilnih delcev. De Bruijn-ovi grafi so tudi osnova mojih raziskav,
+so pa drugače grafično upodobljeni, tako da se jih lahko poveže v opis celotnega celičnega sistema,
+in niso omejeni na opis predstanj ene same celice.
 Razni avtorji \cite{Hartman2013} iščejo vzorce tipa 'Garden of Eden' v celičnem avtomatu 'Game of Life'.
 Zanimiv je pristop s teorijo končnih avtomatov in regularnih jezikov, ki je v
 osnovi namenjen eno dimenzionalnim sistemom. Jean Hardouin-Duparc ga je razširil
@@ -123,11 +111,7 @@ tako, da je celice iz vrstice 2D polja združil v simbole regularnega jezika, za
 vrstic pa predstavlja besedo. Originalni članek je v francoščini, zato še iščem članek,
 kjer bi pristop opisal v angleščini. Podoben pristop s končnimi avtomati nameravam uporabiti tudi sam.
 
-Opiral se bom tudi na ideje iz svojih prejšnjih prispevkov \cite{JerasDobnikar2007}
-\cite{DBLP:conf/iccS/JerasD06} \cite{DBLP:conf/automata/Jeras08},
-ki so analizirali problem v eni dimenziji.
-
-\subsection{Predvideni prispevki magistrske naloge}
+\bigskip
 
 Doslej sem že razvil napredne algoritme za izračun predslik 1D sistema.
 Skozi zgodovino so taki algoritmi napredovali, tako da je padala njihova
@@ -141,13 +125,11 @@ procesna zahtevnost in opisna/implementacijska zahtevnost.
 Iskanje slik 2D sistema je trenutno nekje med improvizacijo in matematičnim modelom.
 Z magistrsko nalogo bi rad razvil algoritme, ki se nagibajo k optimalnosti.
 
-\subsection{Metodologija}
-
 Magistrsko delo bo obsegalo matematičen model, ki bo predvidoma temeljil na matričnih operacijah,
 kjer matrike predstavljajo grafe in končne avtomate.
 Za lažje razumevanje bo problem tudi grafično predstavljen.
-Algoritem bo implementiran kot računalniški program, ki bo omogočal tudi izris grafične predstavitve
-problema.
+Algoritem bo implementiran kot računalniški program,
+ki bo omogočal tudi izris grafične predstavitve problema.
 
 Primerjava s sorodnimi deli bo s stališča procesne zahtevnosi algoritma in glede na to,
 katere znane probleme bo algoritem sposoben rešiti. Nekaj takih problemov, urejenih glede na zahtevnost, je:
@@ -160,13 +142,15 @@ katere znane probleme bo algoritem sposoben rešiti. Nekaj takih problemov, urej
 \end{enumerate}
 
 Rešitev problema določitve obstoja predslik si že predstavljam. 
-Predvidevam, da bom uspel rešiti še problem preštevanja predslik, in ker je to manjši korak, tudi njihovo naštevanje.
+Predvidevam, da bom uspel rešiti še problem preštevanja predslik,
+in ker je to manjši korak, tudi njihovo naštevanje.
 
 Preostalih problemov se tokrat ne bom loteval.
-Problem jezika stanj brez predslik bi potreboval model 2D formalnega jezika, ki še ne obstaja.
-Poleg tega je povezan s problemom reverzibilnosti, ki je na spološno dokazano nerešljiv \cite{Kari1989}, podobno kakor problem tlakovanja (Wang tile).
+Problem jezika stanj brez predslik bi potreboval teorijo 2D formalnega jezika, ki še ne obstaja.
+Poleg tega je povezan s problemom reverzibilnosti, ki je na spološno dokazano nerešljiv \cite{Kari1989}.
 
-\subsection{Literatura in viri}
+\bigskip
+{\bf Literatura}
 \label{literatura}
 
 \renewcommand\refname{}
